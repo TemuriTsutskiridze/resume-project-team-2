@@ -1,11 +1,19 @@
 import React from 'react';
+import {Link, NavLink} from "react-router-dom";
+import PersonalInfo from "./PersonalInfo.jsx";
+import {Route, Routes} from "react-router";
 
 const HomePage = () => {
     return (
         <div>
-            <h1>სააწყისი გვერდი</h1>
+
             <hr/>
-            <button>რეზიუმეს დამატება</button>
+
+            <Link to="/personal-info" as={NavLink}>რეზიუმეს დამატება</Link>
+
+            <Routes>
+                <Route path="/personal-info" element={<PersonalInfo/>}/>
+            </Routes>
 
         </div>
     );
