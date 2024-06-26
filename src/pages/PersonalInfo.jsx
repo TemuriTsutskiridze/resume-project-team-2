@@ -1,8 +1,13 @@
-import React from "react";
+import React from 'react';
+import {Link, NavLink} from "react-router-dom";
 
-function PersonalInfo() {
-  return (
-    <div className="flex h-screen justify-center items-start">
+const PersonalInfo = () => {
+    return (
+        <div>
+            <Link to="/" as={NavLink}>back to HomePage</Link>
+            {/*// todo აქ შიგნით რომ წერია back to HomePage, მაგის მაგივრად  ისარი უნდა ჩაჯდეს*/}
+
+<div className="flex h-screen justify-center items-start">
       <div className="bg-[#F9F9F9] px-[126px] max-w-[1098px] w-full h-screen">
         <div className="title-container flex items-center">
           <span className="text-lg">&lt;</span>
@@ -98,7 +103,11 @@ function PersonalInfo() {
         <img src="" alt="" />
       </div>
     </div>
-  );
-}
+            <h1> პირადი ინფორმაცია</h1>
+            <hr/>
+            <Link to="/experience" as={NavLink}>შემდეგი</Link>
+        </div>
+    );
+};
 
 export default PersonalInfo;
