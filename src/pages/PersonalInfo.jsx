@@ -103,8 +103,6 @@ const PersonalInfo = () => {
         <img src="" alt="" />
       </div>
     </div>
-            <h1> პირადი ინფორმაცია</h1>
-            <hr/>
             <Link to="/experience" as={NavLink}>შემდეგი</Link>
         </div>
     );

@@ -7,6 +7,7 @@ import Experience from "../pages/Experience.jsx";
 import Education from "../pages/Education.jsx";
 import Resume from "../pages/Resume.jsx";
 
+
 const Router = () => {
     return (
         <>
