@@ -4,55 +4,36 @@ import Input from "./components/Input.jsx";
 export const ResumeContext = createContext({
     setValues: () => {},
     values: {
-        first_name: "",
-        last_name: "",
-        image: "mode",
-        about_me: "m",
-        email: "mode",
-        phone_number: "",
-
-        experience: {
-            position: "",
-            employer: "",
-            started_at: "",
-            ended_at: "",
-            description: ""
+        general: {
+            first_name: "",
+            last_name: "",
+            image: "",
+            about_me: "",
+            email: "",
+            phone_number: "",
         },
+        experience: [],
 
-        education: {
-            school: "",
-            degree: "",
-            graduation_date: "",
-            description: ""
-        }
+        education: []
     },
 });
 
-
 export const ResumeProvider = () => {
-    const [values, setValues] = useState({
-        first_name: "",
-        last_name: "",
-        image: "mode",
-        about_me: "m",
-        email: "mode",
-        phone_number: "",
-
-        experience: {
-            position: "",
-            employer: "",
-            started_at: "",
-            ended_at: "",
-            description: ""
+    const [values, setValues] = useState(
+         {
+        general: {
+                first_name: "",
+                last_name: "",
+                image: "",
+                about_me: "",
+                email: "",
+                phone_number: "",
         },
+        experience: [],
 
-        education: {
-            school: "",
-            degree: "",
-            graduation_date: "",
-            description: ""
-        }
-    });
+        education: []
+    },
+    );
 
     return (
         <ResumeContext.Provider value ={{values, setValues}}>

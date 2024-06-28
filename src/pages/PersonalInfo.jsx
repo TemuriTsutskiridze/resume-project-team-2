@@ -1,7 +1,9 @@
 import React from 'react';
 import {Link, NavLink} from "react-router-dom";
+import {useResume} from "../ResumeContext.jsx";
 
 const PersonalInfo = () => {
+  const { values, setValues } = useResume();
     return (
         <div>
             <Link to="/" as={NavLink}>back to HomePage</Link>
