@@ -1,7 +1,9 @@
 import React from 'react';
 import {Link, NavLink} from "react-router-dom";
+import {useResume} from "../ResumeContext.jsx";
 
 const PersonalInfo = () => {
+  const { values, setValues } = useResume();
     return (
         <div>
             <Link to="/" as={NavLink}>back to HomePage</Link>
@@ -103,8 +105,6 @@ const PersonalInfo = () => {
         <img src="" alt="" />
       </div>
     </div>
-            <h1> პირადი ინფორმაცია</h1>
-            <hr/>
             <Link to="/experience" as={NavLink}>შემდეგი</Link>
         </div>
     );
