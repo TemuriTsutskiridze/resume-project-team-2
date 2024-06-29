@@ -12,9 +12,9 @@ function App() {
       <ResumeProvider>
           <Router/>
           {/*//todo გიო Home-ს ან HomePage-ს რომ გადაარქმევ სახელს, რასაც დაარქმევ, ის ჩასვი აქ */}
-          <PersonalInfo/>
-          <Experience/>
-          <Education/>
+          // <PersonalInfo/>
+          // <Experience/>
+          // <Education/>
           {/*//Resume-ს პეიჯი უნდა დარენდერდეს აქ? ???????????*/}
           {/*//იქ ხომ ინპუთები არ გვაქვს*/}
       </ResumeProvider>

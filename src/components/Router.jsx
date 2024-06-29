@@ -17,8 +17,8 @@ const Router = () => {
                 <Link to="/experience" as={NavLink}>-Experience-</Link>
                 <Link to="/education" as={NavLink}>-Education-</Link>
                 <Link to="/resume" as={NavLink}>-Resume-</Link>
-
             </div>
+
             <Routes>
                 <Route path="/" element={<HomePage/>} />
                 <Route path="/personal-info" element={<PersonalInfo/>} />
@@ -27,8 +27,6 @@ const Router = () => {
                 <Route path="/resume" element={<Resume/>} />
 
             </Routes>
-
-
 
         </>
     );

@@ -53,6 +53,17 @@ export const ResumeProvider = () => {
             <Input inputName="education" />
             {/*// todo ობიექტის შიდა ინპუთები როგორ ჩავწერო? */}
 
+            {values.general.first_name}
+            {values.general.last_name}
+            {values.general.image}
+            {values.general.about_me}
+            {values.general.email}
+            {values.general.phone_number}
+
+            {values.experience}
+            {/*//აქ სავარაუდოდ რომელი ობიექტის აიდიც მოვა ის უნდა ჩაჯდეს წერტილის მერე, არა?*/}
+            {values.education}
+
         </ResumeContext.Provider>
     )
 }

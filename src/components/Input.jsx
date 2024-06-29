@@ -1,6 +1,8 @@
 import React from 'react';
 import {useResume} from "../ResumeContext.jsx";
 import PersonalInfo from "../pages/PersonalInfo.jsx";
+import Experience   from "../pages/Experience.jsx";
+import Education  from "../pages/Education.jsx";
 
 
 
@@ -13,7 +15,7 @@ export  function  Input ({inputName,page}) {
             <input
                  type="text"
                 onChange={(event) =>{
-                    // setValues({...values, [inputName]: event.target.value})}
+                    // setValues({...values, [inputName]: event.target.value})}  ეს არ წამიშალოთ რა!!!
                     if (page === "personal_info") {
                         setValues({...values, general: {...values.general,[inputName]: event.target.value }})
                     }else if(page === "experience") {
@@ -32,11 +34,6 @@ export  function  Input ({inputName,page}) {
                             return education;
                             })})
                     }
-
-
-
-
-
                 }
                 }
 

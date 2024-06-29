@@ -6,21 +6,33 @@ const Education = () => {
     const { values, setValues } = useResume();
 
 
-
-
-
     return (
-        <div>
+        <>
             <Link to="/" as={NavLink}>back to HomePage</Link>
             {/*// todo აქ შიგნით რომ წერია back to HomePage, მაგის მაგივრად  ისარი უნდა ჩაჯდეს*/}
             <h1>განათლება</h1>
             <hr/>
+
+            <div>
+                <input
+                    type="text"
+                    value={values[inputName.education]}
+
+                />
+
+
+            </div>
+
+
+
+
+
             <div>
                 <Link to="/experience" as={NavLink}>უკან</Link>
             </div>
 
             <Link to="/resume" as={NavLink}>დასრულება</Link>
-        </div>
+        </>
     );
 };
 
