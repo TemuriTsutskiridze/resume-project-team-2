@@ -1,8 +1,11 @@
 import React from "react";
+import { Link, NavLink } from "react-router-dom";
+import PersonalInfo from "./PersonalInfo.jsx";
+import { Route, Routes } from "react-router";
 import logo from "../assets/logo.png";
 import background from "../assets/background.jpg";
 
-function Home() {
+const HomePage = () => {
   return (
     <div
       className="bg-cover h-screen flex flex-col justify-center items-center"
@@ -14,12 +17,15 @@ function Home() {
         </div>
       </div>
       <div className="flex flex-col items-center justify-center h-full">
-        <button className="py-[18px] px-[126px] text-white bg-[#1A1A1A] rounded-lg">
-          ᲠᲔᲖᲘᲣᲛᲔᲡ ᲓᲐᲛᲐᲢᲔᲑᲐ
-        </button>
+        <Link
+          to="/personal-info"
+          className="text-white bg-[#1A1A1A] rounded-lg py-[18px] px-[126px] text-lg border border-[#1A1A1A] mb-4 "
+        >
+          რეზიუმეს დამატება
+        </Link>
       </div>
     </div>
   );
-}
+};
 
-export default Home;
+export default HomePage;
