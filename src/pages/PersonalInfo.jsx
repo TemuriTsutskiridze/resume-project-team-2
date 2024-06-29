@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { useResume } from "../ResumeContext.jsx";
+import { useResume } from "../lib/useResume";
 
 const PersonalInfo = () => {
-  const { values, setValues } = useResume();
+  const { values, setValues, inputErrors, setInputErrors } = useResume();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -74,7 +74,7 @@ const PersonalInfo = () => {
               <input
                 type="text"
                 name="userSurname"
-                value={inputValues.userSurname}
+                value={values.userSurname}
                 onChange={handleChange}
                 className={`mt-[8px] mb-[8px] border ${
                   inputErrors.userSurname
@@ -110,7 +110,7 @@ const PersonalInfo = () => {
             </label>
             <textarea
               name="aboutInfo"
-              value={inputValues.aboutInfo}
+              value={values.aboutInfo}
               onChange={handleChange}
               className="mt-[8px] border border-[#BCBCBC] w-full px-[16px] py-[14px]"
             />
@@ -127,7 +127,7 @@ const PersonalInfo = () => {
             <input
               type="email"
               name="email"
-              value={inputValues.email}
+              value={values.email}
               onChange={handleChange}
               className={`mt-[8px] mb-[8px] border ${
                 inputErrors.email ? "border-[#EF5050]" : "border-[#BCBCBC]"
@@ -149,7 +149,7 @@ const PersonalInfo = () => {
             <input
               type="tel"
               name="phone"
-              value={inputValues.phone}
+              value={values.phone}
               onChange={handleChange}
               className={`mt-[8px] mb-[8px] border ${
                 inputErrors.phone ? "border-[#EF5050]" : "border-[#BCBCBC]"

@@ -1,5 +1,5 @@
 import React from "react";
-import { useResume } from "../ResumeContext.jsx";
+import { useResume } from "../lib/useResume.js";
 import PersonalInfo from "../pages/PersonalInfo.jsx";
 
 export function Input({ inputName, page }) {
