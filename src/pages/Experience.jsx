@@ -1,26 +1,22 @@
 import { Link, NavLink } from "react-router-dom";
 
-//     setValues({
-//       ...values,
-//       [name]: values.experience.first_name,
-//     });
+// setValues({
 
-// // let error = false;
-// // if (name === "userName" || name === "userSurname") {
-// //   error = value.length < 2;
-// // } else if (name === "email") {
-// //   error = !value.endsWith("@redberry.ge");
-// // } else if (name === "phone") {
-// //   const phoneRegex = /^\+995\d{9}$/;
-// //   error = !phoneRegex.test(value);
-// // }
-// // setInputErrors({ ...inputErrors, [name]: error });
-// // };
+//   ...values,
+//   [name]: values.experience.first_name,
+// });
+
+// let error = false;
+// if (name === "position" || name === "position") {
+//   error = value.length < 2;
+// }
+// setInputErrors({ ...inputErrors, [name]: error });
+
 const Experience = () => {
-  //   const handleChange = (event) => {
-  //     const { values, setValues, inputErrors, setInputErrors } = useResume();
-  //     const { name, value } = event.target;
-  //   };
+  // const handleChange = (event) => {
+
+  //   const { name, value } = event.target;
+  // };
 
   return (
     <div>
@@ -29,7 +25,7 @@ const Experience = () => {
       </Link>
       {/*// todo აქ შიგნით რომ წერია back to HomePage, მაგის მაგივრად  ისარი უნდა ჩაჯდეს*/}
 
-      <div className="flex h-screen justify-center items-start">
+      <div className="flex h-full justify-center items-start">
         <div className="bg-[#F9F9F9] px-[126px] max-w-[1098px] w-full h-screen">
           <div className="title-container flex items-center">
             <span className="text-lg">&lt;</span>
@@ -37,6 +33,7 @@ const Experience = () => {
               <h1 className="text-[#1A1A1A] text-[24px] font-bold">
                 გამოცდილება
               </h1>
+              <hr />
               <span className="text-lg">2/3</span>
             </div>
           </div>
@@ -48,12 +45,14 @@ const Experience = () => {
             >
               თანამდებობა
             </label>
+
             <input
               type="text"
               name="position"
               className="mt-[8px] mb-[8px] border border-[#BCBCBC] px-[16px] py-[14px]"
+              placeholder="დეველოპერი, დიზაინერი, ა.შ."
             />
-            <p className="font-light text-sm">მინიმუმ 2 ასო, ქართული ასოები</p>
+            <p className="font-light text-sm">მინიმუმ 2 სიმბოლო</p>
           </div>
           <div className=" flex flex-col  mt-[40px]">
             <label
@@ -67,10 +66,10 @@ const Experience = () => {
               name="employer"
               className="mt-[8px] mb-[8px] border border-[#BCBCBC] px-[16px] py-[14px]"
             />
-            <p className="font-light text-sm">მინიმუმ 2 ასო, ქართული ასოები</p>
+            <p className="font-light text-sm">მინიმუმ 2 სიმბოლო</p>
           </div>
-          <div className=" flex items-stretch justify-start space-x gap-[50px]">
-            <div className=" mb-[46px] mt-[40px]">
+          <div className=" startEnd items-center flex justify-between gap-[32px] ">
+            <div className=" flex flex-col w-full  mb-[46px] mt-[40px]">
               <label
                 htmlFor="aboutInfo"
                 className="text-[#1A1A1A] text-sm font-medium"
@@ -80,10 +79,10 @@ const Experience = () => {
               <input
                 type="date"
                 name="started_at"
-                className="mt-[8px] border border-[#BCBCBC] w-full px-[16px] py-[14px]"
+                className="mt-[8px] border border-[#BCBCBC]  px-[16px] py-[14px]"
               />
             </div>
-            <div className="mt-[] mb-[46px] ">
+            <div className=" flex  w-full flex-col mt-[40px] mb-[46px] ">
               <label
                 htmlFor="email"
                 className="text-[#1A1A1A] text-sm font-medium"
@@ -93,12 +92,12 @@ const Experience = () => {
               <input
                 type="date"
                 name="ended_at"
-                className="mt-[8px] mb-[8px] border border-[#BCBCBC] w-full px-[16px] py-[14px]"
+                className="  mt-[8px] border border-[#BCBCBC]  px-[16px] py-[14px]"
               />
             </div>
           </div>
 
-          <div className="phone-container mb-[46px]">
+          <div className="phone-container mb-[51px]">
             <label
               htmlFor="phone"
               className="text-[#1A1A1A] text-sm font-medium"
@@ -109,21 +108,28 @@ const Experience = () => {
               type="text"
               name="description"
               className="mt-[8px] mb-[8px] border border-[#BCBCBC] w-full px-[16px] py-[14px] min-h-[123px]"
+              placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"
             />
           </div>
-          <button className="bg-[#1A1A1A] text-white py-[12px] px-[24px] rounded-lg">
-            ᲨᲔᲛᲓᲔᲒᲘ
+          <hr />
+          <button className="bg-[#62A1EB;] mt-[45px] mb-[75px] px-[18px] py-[18px] text-white  ">
+            მეტი გამოცდილების დამატება
           </button>
+          <div className="flex justify-between">
+            <button className="bg-[#6B40E3] text-white py-[12px] px-[24px] rounded-lg">
+              უკან
+            </button>
+            <button className="bg-[#6B40E3] text-white py-[12px] px-[24px] rounded-lg">
+              ᲨᲔᲛᲓᲔᲒᲘ
+            </button>
+          </div>
         </div>
         <div className="sideBar-container w-[822px] flex items-center justify-center bg-gray-200">
           <img src="" alt="" />
         </div>
       </div>
 
-      <hr />
-      <Link to="/experience" as={NavLink}>
-        შემდეგი
-      </Link>
+      <Link to="/experience" as={NavLink}></Link>
     </div>
   );
 };
