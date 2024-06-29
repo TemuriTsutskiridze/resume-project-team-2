@@ -6,6 +6,7 @@ import Education  from "../pages/Education.jsx";
 
 
 
+
 export  function  Input ({inputName,page}) {
   const { values, setValues } = useResume();
     console.log(inputName)

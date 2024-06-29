@@ -13,15 +13,13 @@ const Education = () => {
             <h1>განათლება</h1>
             <hr/>
 
-            <div>
-                <input
-                    type="text"
-                    value={values[inputName.education]}
+            {/*<div>*/}
+            {/*    <input*/}
+            {/*        type="text"*/}
+            {/*        value={values[inputName.education]}*/}
 
-                />
-
-
-            </div>
+            {/*    />*/}
+            {/*</div>*/}
 
 
 
