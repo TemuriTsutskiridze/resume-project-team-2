@@ -4,27 +4,12 @@ import { useResume } from "../ResumeContext.jsx";
 
 const PersonalInfo = () => {
   const { values, setValues } = useResume();
-  const [inputValues, setInputValues] = useState({
-    userName: "",
-    userSurname: "",
-    aboutInfo: "",
-    email: "",
-    phone: "",
-  });
-
-  const [inputErrors, setInputErrors] = useState({
-    userName: false,
-    userSurname: false,
-    aboutInfo: false,
-    email: false,
-    phone: false,
-  });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setInputValues({
-      ...inputValues,
-      [name]: value,
+    setValues({
+      ...values,
+      [name]: values.general.first_name,
     });
 
     let error = false;
@@ -45,7 +30,6 @@ const PersonalInfo = () => {
         <div className="bg-[#F9F9F9] px-[126px] max-w-[1098px] w-full h-screen">
           <div className="title-container flex items-center">
             <Link to="/" as={NavLink}>
-              {/* Use an arrow icon instead of text */}
               <span>&lt;</span>
             </Link>{" "}
             <div className="flex items-center justify-between w-full ml-4">
@@ -71,7 +55,7 @@ const PersonalInfo = () => {
                 className={`mt-[8px] mb-[8px] border ${
                   inputErrors.userName ? "border-[#EF5050]" : "border-[#98E37E]"
                 } px-[16px] py-[14px]`}
-                value={inputValues.userName}
+                value={values.general.first_name}
                 onChange={handleChange}
               />
               <p className="font-light text-sm">

@@ -36,7 +36,7 @@ export const ResumeProvider = () => {
   return (
     <ResumeContext.Provider value={{ values, setValues }}>
       {/*//todo შიგნით ვატან კომპონენტებს, და ეს დასაწერი მაქვს ობიექტის შიგნით ინპუთები როგორ მივცე აქ?;*/}
-      <Input inputName="first_name" />
+      <Input inputName="first_name" className="bg-black" />
       <Input inputName="last_name" />
       <Input inputName="image" />
       <Input inputName="about_me" />
@@ -48,6 +48,14 @@ export const ResumeProvider = () => {
 
       <Input inputName="education" />
       {/*// todo ობიექტის შიდა ინპუთები როგორ ჩავწერო? */}
+      {values.general.first_name}
+      {values.general.last_name}
+      {values.general.image}
+      {values.general.about_me}
+      {values.general.email}
+      {values.general.phone_number}
+      {values.experience}
+      {values.education}
     </ResumeContext.Provider>
   );
 };
