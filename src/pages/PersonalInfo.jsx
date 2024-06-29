@@ -1,6 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 
 function PersonalInfo() {
+  const [inputValues, setInputValues] = useState({
+    userName: "",
+    userSurname: "",
+    aboutInfo: "",
+    email: "",
+    phone: "",
+  });
+
+  const [inputErrors, setInputErrors] = useState({
+    userName: false,
+    userSurname: false,
+    aboutInfo: false,
+    email: false,
+    phone: false,
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setInputValues({
+      ...inputValues,
+      [name]: value,
+    });
+
+    let error = false;
+    if (name === "userName" || name === "userSurname") {
+      error = value.length < 2;
+    } else if (name === "email") {
+      error = !value.endsWith("@redberry.ge");
+    } else if (name === "phone") {
+      const phoneRegex = /^\+995\d{9}$/; // Example regex for Georgian phone numbers
+      error = !phoneRegex.test(value);
+    }
+    setInputErrors({ ...inputErrors, [name]: error });
+  };
+
   return (
     <div className="flex h-screen justify-center items-start">
       <div className="bg-[#F9F9F9] px-[126px] max-w-[1098px] w-full h-screen">
@@ -17,28 +52,42 @@ function PersonalInfo() {
           <div className="nameContainer flex flex-col w-[419px]">
             <label
               htmlFor="userName"
-              className="text-[#1A1A1A] text-sm font-medium "
+              className={`text-sm font-medium ${
+                inputErrors.userName ? "text-[#EF5050]" : "text-[#1A1A1A]"
+              }`}
             >
               სახელი
             </label>
             <input
               type="text"
               name="userName"
-              className="mt-[8px] mb-[8px] border border-[#BCBCBC] px-[16px] py-[14px]"
+              className={`mt-[8px] mb-[8px] border ${
+                inputErrors.userName ? "border-[#EF5050]" : "border-[#98E37E]"
+              } px-[16px] py-[14px]`}
+              value={inputValues.userName}
+              onChange={handleChange}
             />
             <p className="font-light text-sm">მინიმუმ 2 ასო, ქართული ასოები</p>
           </div>
           <div className="surnameContainer flex flex-col w-[419px]">
             <label
               htmlFor="userSurname"
-              className="text-[#1A1A1A] text-sm font-medium"
+              className={`text-sm font-medium ${
+                inputErrors.userSurname ? "text-[#EF5050]" : "text-[#1A1A1A]"
+              }`}
             >
               გვარი
             </label>
             <input
               type="text"
               name="userSurname"
-              className="mt-[8px] mb-[8px] border border-[#BCBCBC] px-[16px] py-[14px]"
+              value={inputValues.userSurname}
+              onChange={handleChange}
+              className={`mt-[8px] mb-[8px] border ${
+                inputErrors.userSurname
+                  ? "border-[#EF5050]"
+                  : "border-[#98E37E]"
+              } px-[16px] py-[14px]`}
             />
             <p className="font-light text-sm">მინიმუმ 2 ასო, ქართული ასოები</p>
           </div>
@@ -50,7 +99,12 @@ function PersonalInfo() {
           >
             პირადი ფოტოს ატვირთვა
           </label>
-          <input type="file" name="photoUpload" className="mt-[8px]" />
+          <input
+            type="file"
+            name="photoUpload"
+            className="mt-[8px]"
+            onChange={handleChange}
+          />
         </div>
         <div className="aboutInfo-container mb-[46px]">
           <label
@@ -61,30 +115,50 @@ function PersonalInfo() {
           </label>
           <textarea
             name="aboutInfo"
+            value={inputValues.aboutInfo}
+            onChange={handleChange}
             className="mt-[8px] border border-[#BCBCBC] w-full px-[16px] py-[14px]"
           />
         </div>
         <div className="email-container mb-[46px]">
-          <label htmlFor="email" className="text-[#1A1A1A] text-sm font-medium">
+          <label
+            htmlFor="email"
+            className={`text-sm font-medium ${
+              inputErrors.email ? "text-[#EF5050]" : "text-[#1A1A1A]"
+            }`}
+          >
             ელ.ფოსტა
           </label>
           <input
             type="email"
             name="email"
-            className="mt-[8px] mb-[8px] border border-[#BCBCBC] w-full px-[16px] py-[14px]"
+            value={inputValues.email}
+            onChange={handleChange}
+            className={`mt-[8px] mb-[8px] border ${
+              inputErrors.email ? "border-[#EF5050]" : "border-[#BCBCBC]"
+            } w-full px-[16px] py-[14px]`}
           />
           <p className="font-light text-sm">
             უნდა მთავრდებოდეს @redberry.ge-ით
           </p>
         </div>
         <div className="phone-container mb-[46px]">
-          <label htmlFor="phone" className="text-[#1A1A1A] text-sm font-medium">
+          <label
+            htmlFor="phone"
+            className={`text-sm font-medium ${
+              inputErrors.phone ? "text-[#EF5050]" : "text-[#1A1A1A]"
+            }`}
+          >
             მობილურის ნომერი
           </label>
           <input
             type="tel"
             name="phone"
-            className="mt-[8px] mb-[8px] border border-[#BCBCBC] w-full px-[16px] py-[14px]"
+            value={inputValues.phone}
+            onChange={handleChange}
+            className={`mt-[8px] mb-[8px] border ${
+              inputErrors.phone ? "border-[#EF5050]" : "border-[#BCBCBC]"
+            } w-full px-[16px] py-[14px]`}
           />
           <p className="font-light text-sm">
             უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს
