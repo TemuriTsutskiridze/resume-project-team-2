@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useResume } from "../ResumeContext.jsx";
 
 const PersonalInfo = () => {
+  const { values, setValues } = useResume();
   const [inputValues, setInputValues] = useState({
     userName: "",
     userSurname: "",

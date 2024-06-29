@@ -1,7 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import PersonalInfo from "./PersonalInfo.jsx";
-import { Route, Routes } from "react-router";
+import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import background from "../assets/background.jpg";
 

@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router";
 import HomePage from "../pages/HomePage.jsx";
-import { Link, NavLink } from "react-router-dom";
 import PersonalInfo from "../pages/PersonalInfo.jsx";
 import Experience from "../pages/Experience.jsx";
 import Education from "../pages/Education.jsx";

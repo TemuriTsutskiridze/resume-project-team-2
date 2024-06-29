@@ -1,15 +1,23 @@
 import React from "react";
-import Router from "./components/Router.jsx";
-import HomePage from "./pages/HomePage.jsx";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { ResumeProvider } from "./ResumeContext";
+import HomePage from "./pages/HomePage";
+import PersonalInfo from "./pages/PersonalInfo";
+import Experience from "./pages/Experience";
+import Education from "./pages/Education";
 
 function App() {
   return (
-    <>
-      <Router />
-      {/* <HomePage /> */}
-      {/*// აქ დროებით დავსვი ლიკები, რომ სატესტოდ ჩანდეს, ანუ სათითაოდ ლინკზე დაჭერით სათითაოდ პეიჯზე გადადიხარ*/}
-      {/*// ისრებს და ღილაკს "შემდეგი" შემდეგ კომიტში გამოვუშვებ*/}
-    </>
+    <ResumeProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/personal-info" element={<PersonalInfo />} />
+          <Route path="/experience" element={<Experience />} />
+          <Route path="/education" element={<Education />} />
+        </Routes>
+      </Router>
+    </ResumeProvider>
   );
 }
 
