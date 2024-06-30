@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
 export const ResumeContext = createContext({
   setValues: () => {},
@@ -12,7 +12,13 @@ export const ResumeContext = createContext({
       phone_number: "",
     },
     experience: [],
-    education: [],
+    education: {
+      //id:1 ,
+      school: "",
+      degree: "",
+      graduation_date: "",
+      description: "",
+    },
   },
   inputErrors: {},
   setInputErrors: () => {},
@@ -30,7 +36,13 @@ export const ResumeProvider = ({ children }) => {
       phone_number: "",
     },
     experience: [],
-    education: [],
+    education: {
+      //id:1 ,
+      school: "",
+      degree: "",
+      graduation_date: "",
+      description: "",
+    },
   });
 
   const [inputErrors, setInputErrors] = useState({
@@ -39,6 +51,9 @@ export const ResumeProvider = ({ children }) => {
     about_me: false,
     email: false,
     phone_number: false,
+    school: false,
+    degree: false,
+    description: false,
   });
 
   const validateInput = (name, value) => {

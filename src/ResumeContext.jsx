@@ -14,7 +14,13 @@ export const ResumeContext = createContext({
     },
     // experience: [],
 
-    // education: [],
+    education: {
+      //id:1 ,
+      school: "",
+      degree: "",
+      graduation_date: "",
+      description: "",
+    },
   },
 });
 
@@ -30,27 +36,31 @@ export const ResumeProvider = () => {
     },
     // experience: [],
 
-    // education: [],
+    education: {
+      // id:1 ,
+      school: "",
+      degree: "",
+      graduation_date: "",
+      description: "",
+    },
   });
 
   return (
     <ResumeContext.Provider value={{ values, setValues }}>
-      {/*//todo შიგნით ვატან კომპონენტებს, და ეს დასაწერი მაქვს ობიექტის შიგნით ინპუთები როგორ მივცე აქ?;*/}
-      <Input inputName="first_name" />
-      <Input inputName="last_name" />
-      <Input inputName="image" />
-      <Input inputName="about_me" />
-      <Input inputName="email" />
-      <Input inputName="phone_number" />
-      {/*// todo ობიექტის შიდა ინპუთები როგორ ჩავწერო? */}
-      {children}
-      {/*// todo ობიექტის შიდა ინპუთები როგორ ჩავწერო? */}
       {values.general.first_name}
       {values.general.last_name}
       {values.general.image}
       {values.general.about_me}
       {values.general.email}
       {values.general.phone_number}
+
+      {values.experience}
+
+      {values.education.id}
+      {values.education.school}
+      {values.education.degree}
+      {values.education.graduation_date}
+      {values.education.description}
     </ResumeContext.Provider>
   );
 };
