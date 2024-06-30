@@ -1,4 +1,3 @@
-import React from "react";
 import Router from "./components/Router.jsx";
 import { ResumeProvider } from "./ResumeProvider.jsx";
 

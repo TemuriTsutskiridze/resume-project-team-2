@@ -11,7 +11,13 @@ export const ResumeContext = createContext({
       email: "",
       phone_number: "",
     },
-    experience: [],
+    experience: {
+      position: "",
+      employer: "",
+      started_at: "",
+      ended_at: "",
+      description: "",
+    },
     education: {
       //id:1 ,
       school: "",
@@ -35,7 +41,13 @@ export const ResumeProvider = ({ children }) => {
       email: "",
       phone_number: "",
     },
-    experience: [],
+    experience: {
+      position: "",
+      employer: "",
+      started_at: "",
+      ended_at: "",
+      description: "",
+    },
     education: {
       //id:1 ,
       school: "",
@@ -54,6 +66,7 @@ export const ResumeProvider = ({ children }) => {
     school: false,
     degree: false,
     description: false,
+    position: false,
   });
 
   const validateInput = (name, value) => {

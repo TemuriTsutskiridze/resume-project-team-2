@@ -1,10 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
+import { useResume } from "../lib/useResume";
+import avatar from "../assets/avatar.jpg";
+import Input from "../components/Input";
 
 const Experience = () => {
   // const handleChange = (event) => {
-
   //   const { name, value } = event.target;
   // };
+  const { inputErrors, values } = useResume();
 
   return (
     <div>
@@ -29,12 +32,15 @@ const Experience = () => {
           <div className=" flex flex-col ">
             <label
               htmlFor="position"
-              className="text-[#1A1A1A] text-sm font-medium "
+              className={`text-[#1A1A1A] text-sm font-medium  ${
+                inputErrors.position ? "text-[#EF5050]" : "text-[#1A1A1A]"
+              }`}
             >
               თანამდებობა
             </label>
 
-            <input
+            <Input
+              inputName="position"
               type="text"
               name="position"
               className="mt-[8px] mb-[8px] border border-[#BCBCBC] px-[16px] py-[14px]"
@@ -49,7 +55,7 @@ const Experience = () => {
             >
               დამსაქმებელი
             </label>
-            <input
+            <Input
               type="text"
               name="employer"
               className="mt-[8px] mb-[8px] border border-[#BCBCBC] px-[16px] py-[14px]"
@@ -64,7 +70,7 @@ const Experience = () => {
               >
                 დაწყების რიცხვი
               </label>
-              <input
+              <Input
                 type="date"
                 name="started_at"
                 className="mt-[8px] border border-[#BCBCBC]  px-[16px] py-[14px]"
@@ -77,7 +83,7 @@ const Experience = () => {
               >
                 დასრულების რიცხვი
               </label>
-              <input
+              <Input
                 type="date"
                 name="ended_at"
                 className="  mt-[8px] border border-[#BCBCBC]  px-[16px] py-[14px]"
@@ -92,7 +98,7 @@ const Experience = () => {
             >
               აღწერა
             </label>
-            <input
+            <Input
               type="text"
               name="description"
               className="mt-[8px] mb-[8px] border border-[#BCBCBC] w-full px-[16px] py-[14px] min-h-[123px]"
@@ -127,8 +133,109 @@ const Experience = () => {
             </Link>
           </div>
         </div>
-        <div className="sideBar-container w-[822px] flex items-center justify-center bg-gray-200">
-          <img src="" alt="" />
+        <div className="sideBar-container w-[822px] flex items-center justify-center">
+          <div className="my-[47px] pr-[75px] pl-[80px] flex">
+            <div>
+              <div className="name-surname-email-mobile-container">
+                <div>
+                  <h1 className="text-[#F93B1D] font-bold text-[34px] mb-[17px] flex gap-[20px] font-face-helvetica leading-10	">
+                    <p>{values.general.position}</p>
+                    <p>{values.general.employer}</p>
+                  </h1>
+                  <p className="text-[#1A1A1A] font-medium text-[18px] font-face-helvetica">
+                    {values.general.starter_at ? (
+                      <>
+                        <span>@</span> {values.general.startet_at}
+                      </>
+                    ) : (
+                      ""
+                    )}
+                  </p>
+                  <p className="text-[#1A1A1A] font-medium text-[18px]">
+                    {values.general.ended_at ? (
+                      <>
+                        <span>&#128222;</span> {values.general.ended_atr}
+                      </>
+                    ) : (
+                      ""
+                    )}
+                  </p>
+                </div>
+              </div>
+              <div className="sideBar-container w-[822px] flex items-center justify-center">
+                <div className="my-[47px] pr-[75px] pl-[80px] flex">
+                  <div>
+                    <div className="name-surname-email-mobile-container">
+                      <div>
+                        <h1 className="text-[#F93B1D] font-bold text-[34px] mb-[17px] flex gap-[20px] font-face-helvetica leading-10	">
+                          <p>{values.general.position}</p>
+                          <p>{values.general.employer}</p>
+                        </h1>
+                        <p className="text-[#1A1A1A] font-medium text-[18px] font-face-helvetica">
+                          {values.general.started_at ? (
+                            <>
+                              <span>@</span> {values.general.started_at}
+                            </>
+                          ) : (
+                            ""
+                          )}
+                        </p>
+                        <p className="text-[#1A1A1A] font-medium text-[18px]">
+                          {values.general.ended_at ? (
+                            <>
+                              <span>&#128222;</span> {values.general.ended_at}
+                            </>
+                          ) : (
+                            ""
+                          )}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="aboutMe-container mt-[34px]">
+                      {values.general.description ? (
+                        <>
+                          <h4 className="text-[#F93B1D] font-bold text-[18px]">
+                            აღწერა
+                          </h4>
+                          <p className="text-[#000000] font-normal text-[16px]">
+                            {values.general.description}
+                          </p>
+                        </>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                  </div>
+                  <img
+                    className="w-[246px] h-[246px] rounded-full"
+                    src={avatar}
+                    alt="avatar"
+                  />
+                </div>
+              </div>
+              ;
+              <div className="aboutMe-container mt-[34px]">
+                {values.general.about_me ? (
+                  <>
+                    <h4 className="text-[#F93B1D] font-bold text-[18px]">
+                      ᲩᲔᲛ ᲨᲔᲡᲐᲮᲔᲑ
+                    </h4>
+                    <p className="text-[#000000] font-normal text-[16px]">
+                      {values.general.about_me}
+                    </p>
+                  </>
+                ) : (
+                  ""
+                )}
+              </div>
+            </div>
+            <img
+              className="w-[246px] h-[246px] rounded-full"
+              src={avatar}
+              alt="avatar"
+            />
+          </div>
         </div>
       </div>
     </div>

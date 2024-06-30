@@ -18,6 +18,22 @@ const Input = ({ inputName, name, error }) => {
           [inputName]: value,
         },
       });
+    } else if (location.pathname === "/experience") {
+      setValues({
+        ...values,
+        experience: {
+          ...values.experience,
+          [inputName]: value,
+        },
+      });
+    } else if (location.pathname === "/education") {
+      setValues({
+        ...values,
+        education: {
+          ...values.education,
+          [inputName]: value,
+        },
+      });
     }
   };
 
