@@ -2,6 +2,7 @@ import React from 'react';
 import {Link, NavLink} from "react-router-dom";
 import {useResume} from "../lib/useResume.js";
 import { FaAnglesLeft } from "react-icons/fa6";
+import {FormSelect} from "react-bootstrap";
 
 const Education = () => {
     const {values, setValues, inputErrors, setInputErrors} = useResume();
@@ -74,13 +75,24 @@ const Education = () => {
                                 }`}
                             >ხარისხი
                             </label>
-                            <input
-                                type="text"
+                            <FormSelect aria-label="Default select example"
+                                        className={`mt-[8px] mb-[8px] border ${
+                                inputErrors.degree ? "border-[#EF5050]" : "border-[#98E37E]"
+                            } px-[16px] py-[14px]`}
                                 //value={values.education.degree}
-                                className={`mt-[8px] mb-[8px] border ${
-                                    inputErrors.degree ? "border-[#EF5050]" : "border-[#98E37E]"
-                                } px-[16px] py-[14px]`}
-                            />
+                            >
+                                <option>აირჩიეთ ხარისხი</option>
+                                <option value="1">საშუალო სკოლის დიპლომი</option>
+                                <option value="2">ზოგადსაგანმანათლებლო დიპლომი</option>
+                                <option value="3">ბაკალავრი</option>
+                                <option value="3">მაგისტრი</option>
+                                <option value="3">დოქტორი</option>
+                                <option value="3">ასოცირებული ხარისხი</option>
+                                <option value="3">სტუდენტი</option>
+                                <option value="3">კოლეჯი (ხარისხის გარეშე)</option>
+                                <option value="3">სხვა</option>
+                            </FormSelect>
+
                         </div>
                         <div className="graduation_dateContainer flex flex-col w-[419px]">
                             <label
