@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 import Input from "./components/Input.jsx";
 
 export const ResumeContext = createContext({
@@ -24,7 +24,7 @@ export const ResumeContext = createContext({
   },
 });
 
-export const ResumeProvider = () => {
+export const ResumeProvider = ({ children }) => {
   const [values, setValues] = useState({
     general: {
       first_name: "",
@@ -37,7 +37,7 @@ export const ResumeProvider = () => {
     experience: [],
 
     education: {
-     // id:1 ,
+      //id:1 ,
       school: "",
       degree: "",
       graduation_date: "",
@@ -45,8 +45,23 @@ export const ResumeProvider = () => {
     },
   });
 
+  const [inputErrors, setInputErrors] = useState({
+    userName: false,
+    userSurname: false,
+    aboutInfo: false,
+    email: false,
+    phone: false,
+    school: false,
+    degree: false,
+    description:false,
+  });
+
   return (
-    <ResumeContext.Provider value={{ values, setValues }}>
+    <ResumeContext.Provider
+      value={{ values, setValues, inputErrors, setInputErrors }}
+    >
+      {children}
+
       {/*//todo შიგნით ვატან კომპონენტებს, და ეს დასაწერი მაქვს ობიექტის შიგნით ინპუთები როგორ მივცე აქ?;*/}
       <Input inputName="first_name" className="bg-black" />
       <Input inputName="last_name" />
@@ -58,12 +73,11 @@ export const ResumeProvider = () => {
       <Input inputName="experience" />
       {/*// todo ობიექტის შიდა ინპუთები როგორ ჩავწერო? */}
 
-      <Input inputName="id" />
+      {/*<Input inputName="id" />*/}
       <Input inputName="school" />
       <Input inputName="degree" />
       <Input inputName="graduation_date" />
       <Input inputName="description" />
-
 
       {values.general.first_name}
       {values.general.last_name}
@@ -74,23 +88,17 @@ export const ResumeProvider = () => {
 
       {values.experience}
 
-      {values.education.id}
+      {/*{values.education.id}*/}
       {values.education.school}
       {values.education.degree}
       {values.education.graduation_date}
       {values.education.description}
 
+      {/*{values.experience.map((experience) => {*/}
+      {/*  <div>{experience.title}</div>;*/}
+      {/*})}*/}
+      {/*//ეს დამჭირდება მერე, როცა ობიექტების მასივად გადავაკეთებ*/}
+
     </ResumeContext.Provider>
   );
-};
-
-export const useResume = () => {
-  const context = useContext(ResumeContext);
-
-  if (!context) {
-    throw new Error(
-      "useResume აუცილებლად! გამოყენებული უნდა იყოს ResumeProvider-თან ერთად "
-    );
-  }
-  return context;
 };
