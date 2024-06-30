@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useResume } from "../lib/useResume.js";
 import { FaAnglesLeft } from "react-icons/fa6";

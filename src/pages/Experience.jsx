@@ -119,7 +119,7 @@ const Experience = () => {
             <Link
               to="/personal-info"
               as={NavLink}
-              className="bg-[#6B40E3] text-white py-[14px] px-[35px] rounded-lg absolute  bottom-[65px]"
+              className="bg-[#6B40E3] text-white py-[14px] px-[35px] rounded-lg  "
             >
               უკან
             </Link>
@@ -127,7 +127,7 @@ const Experience = () => {
             <Link
               to="/education"
               as={NavLink}
-              className="bg-[#6B40E3] text-white py-[14px] px-[35px] rounded-lg absolute right-[160px] bottom-[65px]"
+              className="bg-[#6B40E3] text-white py-[14px] px-[35px] rounded-lg   "
             >
               შემდეგი
             </Link>
