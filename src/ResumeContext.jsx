@@ -1,67 +1,77 @@
-import {createContext, useContext, useState} from "react";
+import { createContext, useContext, useState } from "react";
 import Input from "./components/Input.jsx";
 
 export const ResumeContext = createContext({
-    setValues: () => {},
-    values: {
-        general: {
-            first_name: "",
-            last_name: "",
-            image: "",
-            about_me: "",
-            email: "",
-            phone_number: "",
-        },
-        experience: [],
-
-        education: []
+  setValues: () => {},
+  values: {
+    general: {
+      first_name: "",
+      last_name: "",
+      image: "",
+      about_me: "",
+      email: "",
+      phone_number: "",
     },
+    // experience: [],
+
+    education: {
+      //id:1 ,
+      school: "",
+      degree: "",
+      graduation_date: "",
+      description: "",
+    },
+  },
 });
 
 export const ResumeProvider = () => {
-    const [values, setValues] = useState(
-         {
-        general: {
-                first_name: "",
-                last_name: "",
-                image: "",
-                about_me: "",
-                email: "",
-                phone_number: "",
-        },
-        experience: [],
-
-        education: []
+  const [values, setValues] = useState({
+    general: {
+      first_name: "",
+      last_name: "",
+      image: "",
+      about_me: "",
+      email: "",
+      phone_number: "",
     },
-    );
+    experience: {},
 
-    return (
-        <ResumeContext.Provider value ={{values, setValues}}>
+    education: {
+      // id:1 ,
+      school: "",
+      degree: "",
+      graduation_date: "",
+      description: "",
+    },
+  });
 
-            {/*//todo შიგნით ვატან კომპონენტებს, და ეს დასაწერი მაქვს ობიექტის შიგნით ინპუთები როგორ მივცე აქ?;*/}
-            <Input inputName="first_name" />
-            <Input inputName="last_name" />
-            <Input inputName="image" />
-            <Input inputName="about_me" />
-            <Input inputName="email" />
-            <Input inputName="phone_number" />
+  return (
+    <ResumeContext.Provider value={{ values, setValues }}>
+      {values.general.first_name}
+      {values.general.last_name}
+      {values.general.image}
+      {values.general.about_me}
+      {values.general.email}
+      {values.general.phone_number}
 
-            <Input inputName="experience" />
-            {/*// todo ობიექტის შიდა ინპუთები როგორ ჩავწერო? */}
+      {values.experience}
 
-
-            <Input inputName="education" />
-            {/*// todo ობიექტის შიდა ინპუთები როგორ ჩავწერო? */}
-
-        </ResumeContext.Provider>
-    )
-}
+      {values.education.id}
+      {values.education.school}
+      {values.education.degree}
+      {values.education.graduation_date}
+      {values.education.description}
+    </ResumeContext.Provider>
+  );
+};
 
 export const useResume = () => {
-    const context = useContext(ResumeContext);
+  const context = useContext(ResumeContext);
 
-    if(!context) {
-        throw new Error("useResume აუცილებლად! გამოყენებული უნდა იყოს ResumeProvider-თან ერთად ")
-    }
-    return context;
-}
+  if (!context) {
+    throw new Error(
+      "useResume აუცილებლად! გამოყენებული უნდა იყოს ResumeProvider-თან ერთად "
+    );
+  }
+  return context;
+};

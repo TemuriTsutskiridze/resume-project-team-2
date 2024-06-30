@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+  font-family: "Bold";
+  src: local("HelveticaNeue"),
+    url("../src/fonts/HelveticaNeue-Bold-02.ttf") format("truetype");
+}
+
+.font-face-helvetica {
+  font-family: "HelveticaNeue";
+}

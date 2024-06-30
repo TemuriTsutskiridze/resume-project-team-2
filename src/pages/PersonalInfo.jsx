@@ -1,113 +1,186 @@
-import React from 'react';
-import {Link, NavLink} from "react-router-dom";
-import {useResume} from "../ResumeContext.jsx";
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
+import { useResume } from "../lib/useResume";
+import Input from "../components/Input";
+import avatar from "../assets/avatar.jpg";
+import "../index.css";
 
 const PersonalInfo = () => {
-  const { values, setValues } = useResume();
-    return (
-        <div>
-            <Link to="/" as={NavLink}>back to HomePage</Link>
-            {/*// todo აქ შიგნით რომ წერია back to HomePage, მაგის მაგივრად  ისარი უნდა ჩაჯდეს*/}
+  const { inputErrors, values } = useResume();
 
-<div className="flex h-screen justify-center items-start">
-      <div className="bg-[#F9F9F9] px-[126px] max-w-[1098px] w-full h-screen">
-        <div className="title-container flex items-center">
-          <span className="text-lg">&lt;</span>
-          <div className="flex items-center justify-between w-full ml-4">
-            <h1 className="text-[#1A1A1A] text-[24px] font-bold">
-              ᲞᲘᲠᲐᲓᲘ ᲘᲜᲤᲝ
-            </h1>
-            <span className="text-lg">1/3</span>
+  return (
+    <div>
+      <div className="flex h-screen justify-center items-start">
+        <div className="bg-[#F9F9F9] px-[126px] max-w-[1098px] w-full h-screen pt-[47px] relative">
+          <div className="title-container flex items-center">
+            <Link to="/" as={NavLink}>
+              <span>&lt;</span>
+            </Link>
+            <div className="flex items-center justify-between w-full ml-4">
+              <h1 className="text-[#1A1A1A] text-[24px] font-bold">
+                ᲞᲘᲠᲐᲓᲘ ᲘᲜᲤᲝ
+              </h1>
+              <span className="text-lg">1/3</span>
+            </div>
           </div>
-        </div>
-        <div className="nameSurname-container mt-[69px] mb-[46px] flex gap-[56px]">
-          <div className="nameContainer flex flex-col w-[419px]">
+          <div className="nameSurname-container mt-[69px] mb-[46px] flex gap-[56px]">
+            <div className="nameContainer flex flex-col w-[419px]">
+              <label
+                htmlFor="first_name"
+                className={`text-[16px] font-medium ${
+                  inputErrors.first_name ? "text-[#EF5050]" : "text-[#1A1A1A]"
+                }`}
+              >
+                სახელი
+              </label>
+              <Input
+                inputName="first_name"
+                name="first_name"
+                error={inputErrors.first_name}
+              />
+              <p className="font-light text-sm">
+                მინიმუმ 2 ასო, ქართული ასოები
+              </p>
+            </div>
+            <div className="surnameContainer flex flex-col w-[419px]">
+              <label
+                htmlFor="last_name"
+                className={`text-[16px] font-medium ${
+                  inputErrors.last_name ? "text-[#EF5050]" : "text-[#1A1A1A]"
+                }`}
+              >
+                გვარი
+              </label>
+              <Input
+                inputName="last_name"
+                name="last_name"
+                error={inputErrors.last_name}
+              />
+              <p className="font-light ">მინიმუმ 2 ასო, ქართული ასოები</p>
+            </div>
+          </div>
+          <div className="photoUpload-container mb-[46px]">
             <label
-              htmlFor="userName"
-              className="text-[#1A1A1A] text-sm font-medium "
+              htmlFor="photoUpload"
+              className="text-[#1A1A1A] text-[16px] font-medium"
             >
-              სახელი
+              პირადი ფოტოს ატვირთვა
             </label>
             <input
-              type="text"
-              name="userName"
-              className="mt-[8px] mb-[8px] border border-[#BCBCBC] px-[16px] py-[14px]"
+              type="file"
+              id="upload"
+              name="photoUpload"
+              className="mt-[8px]"
+              onChange={(event) => {
+                const file = event.target.files[0];
+              }}
             />
-            <p className="font-light text-sm">მინიმუმ 2 ასო, ქართული ასოები</p>
+            <label htmlFor="upload">ატვირთვა</label>
           </div>
-          <div className="surnameContainer flex flex-col w-[419px]">
+          <div className="aboutInfo-container mb-[46px]">
             <label
-              htmlFor="userSurname"
-              className="text-[#1A1A1A] text-sm font-medium"
+              htmlFor="about_me"
+              className="text-[#1A1A1A] text-[16px] font-medium"
             >
-              გვარი
+              ჩემ შესახებ (არასავალდებულო)
             </label>
-            <input
-              type="text"
-              name="userSurname"
-              className="mt-[8px] mb-[8px] border border-[#BCBCBC] px-[16px] py-[14px]"
+            <Input inputName="about_me" name="about_me" />
+          </div>
+          <div className="email-container mb-[46px]">
+            <label
+              htmlFor="email"
+              className={`text-[16px] font-medium ${
+                inputErrors.email ? "text-[#EF5050]" : "text-[#1A1A1A]"
+              }`}
+            >
+              ელ.ფოსტა
+            </label>
+            <Input inputName="email" name="email" error={inputErrors.email} />
+            <p className="font-light text-[16px]">
+              უნდა მთავრდებოდეს @redberry.ge-ით
+            </p>
+          </div>
+          <div className="phone-container mb-[46px]">
+            <label
+              htmlFor="phone_number"
+              className={`text-[16px] font-medium ${
+                inputErrors.phone_number ? "text-[#EF5050]" : "text-[#1A1A1A]"
+              }`}
+            >
+              მობილურის ნომერი
+            </label>
+            <Input
+              inputName="phone_number"
+              name="phone_number"
+              error={inputErrors.phone_number}
             />
-            <p className="font-light text-sm">მინიმუმ 2 ასო, ქართული ასოები</p>
+            <p className="font-light text-sm">
+              უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს
+            </p>
+          </div>
+          <Link
+            to="/experience"
+            as={NavLink}
+            className="bg-[#6B40E3] text-white py-[14px] px-[35px] rounded-lg absolute right-[160px] bottom-[65px]"
+          >
+            შემდეგი
+          </Link>
+        </div>
+        <div className="sideBar-container w-[822px] flex items-center justify-center">
+          <div className="my-[47px] pr-[75px] pl-[80px] flex">
+            <div>
+              <div className="name-surname-email-mobile-container">
+                <div>
+                  <h1 className="text-[#F93B1D] font-bold text-[34px] mb-[17px] flex gap-[20px] font-face-helvetica leading-10	">
+                    <p>{values.general.first_name}</p>
+                    <p>{values.general.last_name}</p>
+                  </h1>
+                  <p className="text-[#1A1A1A] font-medium text-[18px] font-face-helvetica">
+                    {values.general.email ? (
+                      <>
+                        <span>@</span> {values.general.email}
+                      </>
+                    ) : (
+                      ""
+                    )}
+                  </p>
+                  <p className="text-[#1A1A1A] font-medium text-[18px]">
+                    {values.general.phone_number ? (
+                      <>
+                        <span>&#128222;</span> {values.general.phone_number}
+                      </>
+                    ) : (
+                      ""
+                    )}
+                  </p>
+                </div>
+              </div>
+
+              <div className="aboutMe-container mt-[34px]">
+                {values.general.about_me ? (
+                  <>
+                    <h4 className="text-[#F93B1D] font-bold text-[18px]">
+                      ᲩᲔᲛ ᲨᲔᲡᲐᲮᲔᲑ
+                    </h4>
+                    <p className="text-[#000000] font-normal text-[16px]">
+                      {values.general.about_me}
+                    </p>
+                  </>
+                ) : (
+                  ""
+                )}
+              </div>
+            </div>
+            <img
+              className="w-[246px] h-[246px] rounded-full"
+              src={avatar}
+              alt="avatar"
+            />
           </div>
         </div>
-        <div className="photoUpload-container mb-[46px]">
-          <label
-            htmlFor="photoUpload"
-            className="text-[#1A1A1A] text-sm font-medium"
-          >
-            პირადი ფოტოს ატვირთვა
-          </label>
-          <input type="file" name="photoUpload" className="mt-[8px]" />
-        </div>
-        <div className="aboutInfo-container mb-[46px]">
-          <label
-            htmlFor="aboutInfo"
-            className="text-[#1A1A1A] text-sm font-medium"
-          >
-            ჩემ შესახებ (არასავალდებულო)
-          </label>
-          <textarea
-            name="aboutInfo"
-            className="mt-[8px] border border-[#BCBCBC] w-full px-[16px] py-[14px]"
-          />
-        </div>
-        <div className="email-container mb-[46px]">
-          <label htmlFor="email" className="text-[#1A1A1A] text-sm font-medium">
-            ელ.ფოსტა
-          </label>
-          <input
-            type="email"
-            name="email"
-            className="mt-[8px] mb-[8px] border border-[#BCBCBC] w-full px-[16px] py-[14px]"
-          />
-          <p className="font-light text-sm">
-            უნდა მთავრდებოდეს @redberry.ge-ით
-          </p>
-        </div>
-        <div className="phone-container mb-[46px]">
-          <label htmlFor="phone" className="text-[#1A1A1A] text-sm font-medium">
-            მობილურის ნომერი
-          </label>
-          <input
-            type="tel"
-            name="phone"
-            className="mt-[8px] mb-[8px] border border-[#BCBCBC] w-full px-[16px] py-[14px]"
-          />
-          <p className="font-light text-sm">
-            უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს
-          </p>
-        </div>
-        <button className="bg-[#1A1A1A] text-white py-[12px] px-[24px] rounded-lg">
-          ᲨᲔᲛᲓᲔᲒᲘ
-        </button>
-      </div>
-      <div className="sideBar-container w-[822px] flex items-center justify-center bg-gray-200">
-        <img src="" alt="" />
       </div>
     </div>
-            <Link to="/experience" as={NavLink}>შემდეგი</Link>
-        </div>
-    );
+  );
 };
 
 export default PersonalInfo;
