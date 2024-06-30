@@ -1,49 +1,39 @@
 import React from "react";
-import { useResume } from "../lib/useResume.js";
-import PersonalInfo from "../pages/PersonalInfo.jsx";
+import { useResume } from "../lib/useResume";
+import { useLocation } from "react-router";
 
-export function Input({ inputName, page }) {
-  const { values, setValues } = useResume();
-  console.log(inputName);
+const Input = ({ inputName, name, error }) => {
+  const { values, setValues, validateInput } = useResume();
+  const location = useLocation();
+
+  const handleChange = (event) => {
+    const { value } = event.target;
+    validateInput(inputName, value);
+
+    if (location.pathname === "/personal-info") {
+      setValues({
+        ...values,
+        general: {
+          ...values.general,
+          [inputName]: value,
+        },
+      });
+    }
+  };
 
   return (
     <div>
       <input
+        name={name}
+        className={`mt-[8px] border w-full px-[16px] py-[14px] ${
+          error ? "border-[#EF5050]" : "border-[#BCBCBC]"
+        }`}
         type="text"
-        onChange={(event) => {
-          // setValues({...values, [inputName]: event.target.value})}
-          if (page === "personal-info") {
-            setValues({
-              ...values,
-              general: { ...values.general, [inputName]: event.target.value },
-            });
-          } else if (page === "experience") {
-            setValues({
-              ...values,
-              experience: values.experience.map((experience) => {
-                if (experience.id === 2) {
-                  //todo აქ 2-იანის ნაცვლად უნდა მოვიდეს ობიექტის აიდი
-                  return { ...experience, [inputName]: event.target.value };
-                }
-                return experience;
-              }),
-            });
-          } else if (page === "education") {
-            setValues({
-              ...values,
-              education: values.education.map((education) => {
-                if (education.id === 1) {
-                  //1-ინის ნაცვლად უნდა ჩაიწეროდ მოსული ობიექტის აიდი
-                  return { ...education, [inputName]: event.target.value };
-                }
-                return education;
-              }),
-            });
-          }
-        }}
+        value={values.general[inputName] || ""}
+        onChange={handleChange}
       />
     </div>
   );
-}
+};
 
 export default Input;

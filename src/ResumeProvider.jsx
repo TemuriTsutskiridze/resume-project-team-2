@@ -1,5 +1,4 @@
-import { createContext, useContext, useState } from "react";
-import Input from "./components/Input.jsx";
+import { createContext, useState } from "react";
 
 export const ResumeContext = createContext({
   setValues: () => {},
@@ -13,9 +12,17 @@ export const ResumeContext = createContext({
       phone_number: "",
     },
     experience: [],
-
-    education: [],
+    education: {
+      //id:1 ,
+      school: "",
+      degree: "",
+      graduation_date: "",
+      description: "",
+    },
   },
+  inputErrors: {},
+  setInputErrors: () => {},
+  validateInput: () => {},
 });
 
 export const ResumeProvider = ({ children }) => {
@@ -29,47 +36,52 @@ export const ResumeProvider = ({ children }) => {
       phone_number: "",
     },
     experience: [],
-
-    education: [],
+    education: {
+      //id:1 ,
+      school: "",
+      degree: "",
+      graduation_date: "",
+      description: "",
+    },
   });
 
   const [inputErrors, setInputErrors] = useState({
-    userName: false,
-    userSurname: false,
-    aboutInfo: false,
+    first_name: false,
+    last_name: false,
+    about_me: false,
     email: false,
-    phone: false,
+    phone_number: false,
+    school: false,
+    degree: false,
+    description: false,
   });
+
+  const validateInput = (name, value) => {
+    let errors = { ...inputErrors };
+    switch (name) {
+      case "first_name":
+        errors.first_name = value.length < 2;
+        break;
+      case "last_name":
+        errors.last_name = value.length < 2;
+        break;
+      case "email":
+        errors.email = !value.endsWith("@redberry.ge");
+        break;
+      case "phone_number":
+        errors.phone_number = value.length < 9;
+        break;
+      default:
+        break;
+    }
+    setInputErrors(errors);
+  };
 
   return (
     <ResumeContext.Provider
-      value={{ values, setValues, inputErrors, setInputErrors }}
+      value={{ values, setValues, inputErrors, setInputErrors, validateInput }}
     >
       {children}
-      {/*//todo შიგნით ვატან კომპონენტებს, და ეს დასაწერი მაქვს ობიექტის შიგნით ინპუთები როგორ მივცე აქ?;*/}
-      <Input inputName="first_name" className="bg-black" />
-      <Input inputName="last_name" />
-      <Input inputName="image" />
-      <Input inputName="about_me" />
-      <Input inputName="email" />
-      <Input inputName="phone_number" />
-
-      <Input inputName="experience" />
-      {/*// todo ობიექტის შიდა ინპუთები როგორ ჩავწერო? */}
-
-      <Input inputName="education" />
-      {/*// todo ობიექტის შიდა ინპუთები როგორ ჩავწერო? */}
-      {values.general.first_name}
-      {values.general.last_name}
-      {values.general.image}
-      {values.general.about_me}
-      {values.general.email}
-      {values.general.phone_number}
-      {values.experience}
-      {values.education}
-      {values.experience.map((experience) => {
-        <div>{experience.title}</div>;
-      })}
     </ResumeContext.Provider>
   );
 };

@@ -1,14 +1,24 @@
-import React from 'react';
-import {Link, NavLink} from "react-router-dom";
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
+import { FaAnglesLeft } from "react-icons/fa6";
 
 const Resume = () => {
-    return (
-        <div>
-            <Link to="/" as={NavLink}>back to HomePage</Link>
-            {/*// todo აქ შიგნით რომ წერია back to HomePage, მაგის მაგივრად  ისარი უნდა ჩაჯდეს*/}
-            <h1>რეზიუმე</h1>
+  return (
+    <div className="flex h-screen justify-center items-start">
+      <div className="bg-[#F9F9F9] px-[126px] max-w-[1098px] w-full h-screen">
+        <div className="title-container flex items-center">
+          <Link to="/" as={NavLink}>
+            <span>
+              {" "}
+              <FaAnglesLeft />{" "}
+            </span>
+          </Link>{" "}
         </div>
-    );
+
+        <h1>რეზიუმე</h1>
+      </div>
+    </div>
+  );
 };
 
 export default Resume;
