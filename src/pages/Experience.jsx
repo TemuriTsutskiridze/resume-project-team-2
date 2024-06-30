@@ -1,17 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
 
-// setValues({
-
-//   ...values,
-//   [name]: values.experience.first_name,
-// });
-
-// let error = false;
-// if (name === "position" || name === "position") {
-//   error = value.length < 2;
-// }
-// setInputErrors({ ...inputErrors, [name]: error });
-
 const Experience = () => {
   // const handleChange = (event) => {
 
@@ -115,21 +103,34 @@ const Experience = () => {
           <button className="bg-[#62A1EB;] mt-[45px] mb-[75px] px-[18px] py-[18px] text-white  ">
             მეტი გამოცდილების დამატება
           </button>
-          <div className="flex justify-between">
-            <button className="bg-[#6B40E3] text-white py-[12px] px-[24px] rounded-lg">
+          <div className="flex justify-between relative ">
+            {/* <button className="bg-[#6B40E3] text-white py-[12px] px-[24px] rounded-lg">
               უკან
             </button>
-            <button className="bg-[#6B40E3] text-white py-[12px] px-[24px] rounded-lg">
+            <button  onClick={} className="bg-[#6B40E3] text-white py-[12px] px-[24px] rounded-lg">
               ᲨᲔᲛᲓᲔᲒᲘ
-            </button>
+            </button> */}
+            <Link
+              to="/personal-info"
+              as={NavLink}
+              className="bg-[#6B40E3] text-white py-[14px] px-[35px] rounded-lg absolute  bottom-[65px]"
+            >
+              უკან
+            </Link>
+
+            <Link
+              to="/education"
+              as={NavLink}
+              className="bg-[#6B40E3] text-white py-[14px] px-[35px] rounded-lg absolute right-[160px] bottom-[65px]"
+            >
+              შემდეგი
+            </Link>
           </div>
         </div>
         <div className="sideBar-container w-[822px] flex items-center justify-center bg-gray-200">
           <img src="" alt="" />
         </div>
       </div>
-
-      <Link to="/experience" as={NavLink}></Link>
     </div>
   );
 };
