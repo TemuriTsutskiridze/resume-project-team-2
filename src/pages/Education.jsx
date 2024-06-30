@@ -136,7 +136,7 @@ const Education = () => {
 
                     <hr/>
 
-                    <div>
+                    <div className="buttons gap-[56px]">
                         <Link to="/experience"
                               as={NavLink}
                               className="bg-[#1A1A1A] text-white py-[12px] px-[24px] rounded-lg">
