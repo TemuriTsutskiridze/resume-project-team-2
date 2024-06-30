@@ -34,7 +34,7 @@ export const ResumeProvider = () => {
       email: "",
       phone_number: "",
     },
-    // experience: [],
+    experience: {},
 
     education: {
       // id:1 ,

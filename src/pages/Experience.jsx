@@ -1,4 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
+import { useResume } from "../lib/useResume";
+import avatar from "../assets/avatar.jpg";
 
 // setValues({
 
@@ -17,6 +19,7 @@ const Experience = () => {
 
   //   const { name, value } = event.target;
   // };
+  const { inputErrors, values } = useResume();
 
   return (
     <div>
@@ -124,8 +127,57 @@ const Experience = () => {
             </button>
           </div>
         </div>
-        <div className="sideBar-container w-[822px] flex items-center justify-center bg-gray-200">
-          <img src="" alt="" />
+        <div className="sideBar-container w-[822px] flex items-center justify-center">
+          <div className="my-[47px] pr-[75px] pl-[80px] flex">
+            <div>
+              <div className="name-surname-email-mobile-container">
+                <div>
+                  <h1 className="text-[#F93B1D] font-bold text-[34px] mb-[17px] flex gap-[20px] font-face-helvetica leading-10	">
+                    <p>{values.general.first_name}</p>
+                    <p>{values.general.last_name}</p>
+                  </h1>
+                  <p className="text-[#1A1A1A] font-medium text-[18px] font-face-helvetica">
+                    {values.general.email ? (
+                      <>
+                        <span>@</span> {values.general.email}
+                      </>
+                    ) : (
+                      ""
+                    )}
+                  </p>
+                  <p className="text-[#1A1A1A] font-medium text-[18px]">
+                    {values.general.phone_number ? (
+                      <>
+                        <span>&#128222;</span> {values.general.phone_number}
+                      </>
+                    ) : (
+                      ""
+                    )}
+                  </p>
+                </div>
+              </div>
+
+              <div className="aboutMe-container mt-[34px]">
+                {values.general.about_me ? (
+                  <>
+                    <h4 className="text-[#F93B1D] font-bold text-[18px]">
+                      ᲩᲔᲛ ᲨᲔᲡᲐᲮᲔᲑ
+                    </h4>
+                    <p className="text-[#000000] font-normal text-[16px]">
+                      {values.general.about_me}
+                    </p>
+                  </>
+                ) : (
+                  ""
+                )}
+              </div>
+            </div>
+            <img
+              className="w-[246px] h-[246px] rounded-full"
+              src={avatar}
+              alt="avatar"
+            />
+          </div>
         </div>
       </div>
 
