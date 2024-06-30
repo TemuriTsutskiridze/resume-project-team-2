@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link, NavLink} from "react-router-dom";
 import {useResume} from "../lib/useResume.js";
+import { FaAnglesLeft } from "react-icons/fa6";
 
 const Education = () => {
     const {values, setValues, inputErrors, setInputErrors} = useResume();
@@ -27,14 +28,14 @@ const Education = () => {
                 <div className="bg-[#F9F9F9] px-[126px] max-w-[1098px] w-full h-screen">
                     <div className="title-container flex items-center">
                         <Link to="/" as={NavLink}>
-                            <span> &lt; </span>
+                            <span> <FaAnglesLeft /> </span>
                         </Link>{" "}
                         <div className="flex items-center justify-between w-full ml-4">
                             <h1 className="text-[#1A1A1A] text-[24px] font-bold">
                                 გ ა ნ ა თ ლ ე ბ ა
                                 <hr/>
                             </h1>
-                            <span className="text-lg">3/3</span>
+                            <span className="text-lg font-bold">3/3</span>
                         </div>
                     </div>
 
@@ -52,9 +53,10 @@ const Education = () => {
                                 type="text"
                                 name="school"
                                 className={`mt-[8px] mb-[8px] border ${
-                                    inputErrors.userName ? "border-[#EF5050]" : "border-[#98E37E]"
+                                    inputErrors.school ? "border-[#EF5050]" : "border-[#98E37E]"
                                 } px-[16px] py-[14px]`}
                                 //value={values.education.school}
+                               // value={values[inputName]} ???????????
                                 onChange={handleChange}
                             />
                             <p className="font-light text-sm">
