@@ -4,6 +4,7 @@ import avatar from "../assets/avatar.jpg";
 import Input from "../components/Input";
 import { useState } from "react";
 import Education from "./Education";
+import "../index.css";
 
 const Experience = () => {
   const { inputErrors, values, setValues } = useResume();
