@@ -3,6 +3,7 @@ import { useResume } from "../lib/useResume";
 import avatar from "../assets/avatar.jpg";
 import Input from "../components/Input";
 import { useState } from "react";
+import Education from "./Education";
 
 const Experience = () => {
   const { inputErrors, values, setValues } = useResume();
@@ -162,7 +163,7 @@ const Experience = () => {
         </div>
       </div>
 
-      <div className="sideBar-container flex-col w-[822px] flex items-center justify-center">
+      <div className="sideBar-container flex-col w-[822px] flex px-[80px] py-[48px]">
         <div className="my-[47px] pr-[75px] pl-[80px] flex">
           <div>
             <div className="name-surname-email-mobile-container">
@@ -210,7 +211,7 @@ const Experience = () => {
         {/* end personal info  */}
 
         {/* <div className=" resume w-[822px] flex items-center justify-center"> */}
-        <div className="experience-infos justify-start unset">
+        <div className="experience-infos justify-start ">
           <h2 className="text-[#F93B1D] font-bold text-[18px] mt-[34px] mb-[15px]">
             გამოცდილება
           </h2>
@@ -266,11 +267,13 @@ const Experience = () => {
                 </p>
               </>
             )}
+
+            {/* tamar aq daapaste */}
           </div>
+          {/* <Education startDate={startDate}></Education> */}
         </div>
       </div>
     </div>
-    // </div>
   );
 };
 
