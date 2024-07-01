@@ -41,7 +41,7 @@ const Input = ({ inputName, name, error }) => {
       <input
         name={name}
         className={`mt-[8px] border w-full px-[16px] py-[14px] ${
-          error ? "border-[#EF5050]" : "border-[#BCBCBC]"
+          error ? "border-[#EF5050] border-2	" : "border-2	border-[##98E37E]"
         }`}
         type="text"
         value={

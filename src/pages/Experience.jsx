@@ -37,7 +37,7 @@ const Experience = () => {
 
   return (
     <div className="flex h-full justify-center items-start">
-      <div className="bg-[#F9F9F9] px-[126px] max-w-[1098px] w-full h-screen">
+      <div className="bg-[#F9F9F9] px-[126px] max-w-[1098px] w-full pt-[47px] h-screen">
         <div className="title-container flex items-center">
           <Link to="/" as={NavLink}>
             &lt;

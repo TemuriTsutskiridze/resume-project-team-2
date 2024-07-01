@@ -6,6 +6,7 @@ import { FormSelect } from "react-bootstrap";
 import avatar from "../assets/avatar.jpg";
 import "../index.css";
 import Resume from "./Resume.jsx";
+import { useState } from "react";
 
 const Education = () => {
   const { inputErrors, values } = useResume();
