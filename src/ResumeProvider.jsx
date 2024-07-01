@@ -63,8 +63,10 @@ export const ResumeProvider = ({ children }) => {
     about_me: false,
     email: false,
     phone_number: false,
+
     school: false,
     degree: false,
+    graduation_date: false,
     description: false,
     position: false,
     employer: false,
@@ -94,7 +96,21 @@ export const ResumeProvider = ({ children }) => {
       case "employer":
         errors.employer = value.length < 2;
         break;
+      case "school":
+        errors.school = !value.length < 2;
+        break;
 
+      case "degree":
+        errors.degree = !value;
+        break;
+
+      case "graduation_date":
+        errors.graduation_date = !value;
+        break;
+
+      case "description":
+        errors.description = !value;
+        break;
       default:
         break;
     }
