@@ -1,187 +1,275 @@
 import { Link, NavLink } from "react-router-dom";
 import { useResume } from "../lib/useResume";
 import avatar from "../assets/avatar.jpg";
-
-// setValues({
-
-//   ...values,
-//   [name]: values.experience.first_name,
-// });
-
-// let error = false;
-// if (name === "position" || name === "position") {
-//   error = value.length < 2;
-// }
-// setInputErrors({ ...inputErrors, [name]: error });
+import Input from "../components/Input";
+import { useState } from "react";
+import Education from "./Education";
+import "../index.css";
 
 const Experience = () => {
-  // const handleChange = (event) => {
+  const { inputErrors, values, setValues } = useResume();
+  const [startDate, setStartDate] = useState(values.experience.started_at);
+  const [endDate, setEndDate] = useState(values.experience.ended_at);
 
-  //   const { name, value } = event.target;
+  // const handleStartDate = (event) => {
+  //   setStartDate(event.target.value);
   // };
-  const { inputErrors, values } = useResume();
+
+  // const handleEndDate = (event) => {
+  //   setEndDate(event.target.value);
+  // };
+  const handleStartDate = (event) => {
+    const newStartDate = event.target.value;
+    setStartDate(newStartDate);
+    setValues((prevValues) => ({
+      ...prevValues,
+      experience: { ...prevValues.experience, started_at: newStartDate },
+    }));
+  };
+
+  const handleEndDate = (event) => {
+    const newEndDate = event.target.value;
+    setEndDate(newEndDate);
+    setValues((prevValues) => ({
+      ...prevValues,
+      experience: { ...prevValues.experience, ended_at: newEndDate },
+    }));
+  };
 
   return (
-    <div>
-      <Link to="/" as={NavLink}>
-        back to HomePage
-      </Link>
-      {/*// todo აქ შიგნით რომ წერია back to HomePage, მაგის მაგივრად  ისარი უნდა ჩაჯდეს*/}
-
-      <div className="flex h-full justify-center items-start">
-        <div className="bg-[#F9F9F9] px-[126px] max-w-[1098px] w-full h-screen">
-          <div className="title-container flex items-center">
-            <span className="text-lg">&lt;</span>
-            <div className="flex items-center justify-between w-full ml-4">
-              <h1 className="text-[#1A1A1A] text-[24px] font-bold">
-                გამოცდილება
-              </h1>
-              <hr />
-              <span className="text-lg">2/3</span>
-            </div>
-          </div>
-
-          <div className=" flex flex-col ">
-            <label
-              htmlFor="position"
-              className="text-[#1A1A1A] text-sm font-medium "
-            >
-              თანამდებობა
-            </label>
-
-            <input
-              type="text"
-              name="position"
-              className="mt-[8px] mb-[8px] border border-[#BCBCBC] px-[16px] py-[14px]"
-              placeholder="დეველოპერი, დიზაინერი, ა.შ."
-            />
-            <p className="font-light text-sm">მინიმუმ 2 სიმბოლო</p>
-          </div>
-          <div className=" flex flex-col  mt-[40px]">
-            <label
-              htmlFor="employer"
-              className="text-[#1A1A1A] text-sm font-medium"
-            >
-              დამსაქმებელი
-            </label>
-            <input
-              type="text"
-              name="employer"
-              className="mt-[8px] mb-[8px] border border-[#BCBCBC] px-[16px] py-[14px]"
-            />
-            <p className="font-light text-sm">მინიმუმ 2 სიმბოლო</p>
-          </div>
-          <div className=" startEnd items-center flex justify-between gap-[32px] ">
-            <div className=" flex flex-col w-full  mb-[46px] mt-[40px]">
-              <label
-                htmlFor="aboutInfo"
-                className="text-[#1A1A1A] text-sm font-medium"
-              >
-                დაწყების რიცხვი
-              </label>
-              <input
-                type="date"
-                name="started_at"
-                className="mt-[8px] border border-[#BCBCBC]  px-[16px] py-[14px]"
-              />
-            </div>
-            <div className=" flex  w-full flex-col mt-[40px] mb-[46px] ">
-              <label
-                htmlFor="email"
-                className="text-[#1A1A1A] text-sm font-medium"
-              >
-                დასრულების რიცხვი
-              </label>
-              <input
-                type="date"
-                name="ended_at"
-                className="  mt-[8px] border border-[#BCBCBC]  px-[16px] py-[14px]"
-              />
-            </div>
-          </div>
-
-          <div className="phone-container mb-[51px]">
-            <label
-              htmlFor="phone"
-              className="text-[#1A1A1A] text-sm font-medium"
-            >
-              აღწერა
-            </label>
-            <input
-              type="text"
-              name="description"
-              className="mt-[8px] mb-[8px] border border-[#BCBCBC] w-full px-[16px] py-[14px] min-h-[123px]"
-              placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"
-            />
-          </div>
-          <hr />
-          <button className="bg-[#62A1EB;] mt-[45px] mb-[75px] px-[18px] py-[18px] text-white  ">
-            მეტი გამოცდილების დამატება
-          </button>
-          <div className="flex justify-between">
-            <button className="bg-[#6B40E3] text-white py-[12px] px-[24px] rounded-lg">
-              უკან
-            </button>
-            <button className="bg-[#6B40E3] text-white py-[12px] px-[24px] rounded-lg">
-              ᲨᲔᲛᲓᲔᲒᲘ
-            </button>
+    <div className="flex h-full justify-center items-start">
+      <div className="bg-[#F9F9F9] px-[126px] max-w-[1098px] w-full pt-[47px] h-screen">
+        <div className="title-container flex items-center">
+          <Link to="/" as={NavLink}>
+            &lt;
+          </Link>
+          <div className="flex items-center justify-between w-full ml-4">
+            <h1 className="text-[#1A1A1A] text-[24px] font-bold">
+              გამოცდილება
+            </h1>
+            <hr />
+            <span className="text-lg">2/3</span>
           </div>
         </div>
-        <div className="sideBar-container w-[822px] flex items-center justify-center">
-          <div className="my-[47px] pr-[75px] pl-[80px] flex">
-            <div>
-              <div className="name-surname-email-mobile-container">
-                <div>
-                  <h1 className="text-[#F93B1D] font-bold text-[34px] mb-[17px] flex gap-[20px] font-face-helvetica leading-10	">
-                    <p>{values.general.first_name}</p>
-                    <p>{values.general.last_name}</p>
-                  </h1>
-                  <p className="text-[#1A1A1A] font-medium text-[18px] font-face-helvetica">
-                    {values.general.email ? (
-                      <>
-                        <span>@</span> {values.general.email}
-                      </>
-                    ) : (
-                      ""
-                    )}
-                  </p>
-                  <p className="text-[#1A1A1A] font-medium text-[18px]">
-                    {values.general.phone_number ? (
-                      <>
-                        <span>&#128222;</span> {values.general.phone_number}
-                      </>
-                    ) : (
-                      ""
-                    )}
-                  </p>
-                </div>
-              </div>
 
-              <div className="aboutMe-container mt-[34px]">
-                {values.general.about_me ? (
-                  <>
-                    <h4 className="text-[#F93B1D] font-bold text-[18px]">
-                      ᲩᲔᲛ ᲨᲔᲡᲐᲮᲔᲑ
-                    </h4>
-                    <p className="text-[#000000] font-normal text-[16px]">
-                      {values.general.about_me}
-                    </p>
-                  </>
-                ) : (
-                  ""
-                )}
-              </div>
-            </div>
-            <img
-              className="w-[246px] h-[246px] rounded-full"
-              src={avatar}
-              alt="avatar"
+        <div className="flex flex-col">
+          <label
+            htmlFor="position"
+            className={`text-sm font-medium ${
+              inputErrors.position ? "text-[#EF5050]" : "text-[#1A1A1A]"
+            }`}
+          >
+            თანამდებობა
+          </label>
+          <Input
+            inputName="position"
+            type="text"
+            name="position"
+            className="mt-[8px] mb-[8px] border border-[#BCBCBC] px-[16px] py-[14px]"
+            placeholder="დეველოპერი, დიზაინერი, ა.შ."
+            error={inputErrors.position}
+          />
+          <p className="font-light text-sm">მინიმუმ 2 სიმბოლო</p>
+        </div>
+
+        <div className="flex flex-col mt-[40px]">
+          <label
+            htmlFor="employer"
+            className={`text-sm font-medium ${
+              inputErrors.employer ? "text-[#EF5050]" : "text-[#1A1A1A]"
+            }`}
+          >
+            დამსაქმებელი
+          </label>
+          <Input
+            inputName="employer"
+            type="text"
+            name="employer"
+            className="mt-[8px] mb-[8px] border border-[#BCBCBC] px-[16px] py-[14px]"
+            error={inputErrors.employer}
+          />
+          <p className="font-light text-sm">მინიმუმ 2 სიმბოლო</p>
+        </div>
+
+        <div className="flex justify-between gap-[32px] mt-[40px] mb-[46px]">
+          <div className="flex flex-col w-full">
+            <label
+              htmlFor="started_at"
+              className="text-sm font-medium text-[#1A1A1A]"
+            >
+              დაწყების რიცხვი
+            </label>
+            <input
+              onChange={handleStartDate}
+              value={startDate}
+              type="date"
+              name="started_at"
+              className="mt-[8px] border border-[#BCBCBC] px-[16px] py-[14px]"
             />
           </div>
+          <div className="flex flex-col w-full">
+            <label
+              htmlFor="ended_at"
+              className="text-sm font-medium text-[#1A1A1A]"
+            >
+              დასრულების რიცხვი
+            </label>
+            <input
+              onChange={handleEndDate}
+              value={endDate}
+              type="date"
+              name="ended_at"
+              className="mt-[8px] border border-[#BCBCBC] px-[16px] py-[14px]"
+            />
+          </div>
+        </div>
+
+        <div className="mb-[51px]">
+          <label
+            htmlFor="description"
+            className="text-sm font-medium text-[#1A1A1A]"
+          >
+            აღწერა
+          </label>
+          <Input
+            inputName="description"
+            type="text"
+            name="description"
+            className="mt-[8px] mb-[8px] border border-[#BCBCBC] w-full px-[16px] py-[14px] min-h-[123px]"
+            placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"
+            error={inputErrors.description}
+          />
+        </div>
+
+        <hr />
+        <button className="bg-[#62A1EB] mt-[45px] mb-[75px] px-[18px] py-[18px] text-white">
+          მეტი გამოცდილების დამატება
+        </button>
+
+        <div className="flex justify-between">
+          <Link
+            to="/personal-info"
+            as={NavLink}
+            className="bg-[#6B40E3] text-white py-[14px] px-[35px] rounded-lg"
+          >
+            უკან
+          </Link>
+          <Link
+            to="/education"
+            as={NavLink}
+            className="bg-[#6B40E3] text-white py-[14px] px-[35px] rounded-lg"
+          >
+            შემდეგი
+          </Link>
         </div>
       </div>
 
-      <Link to="/experience" as={NavLink}></Link>
+      <div className="sideBar-container flex-col w-[822px] flex px-[80px] py-[48px]">
+        <div className="my-[47px]">
+          <div className="flex flex-col">
+            <div className="name-surname-email-mobile-container w-[432px] flex flex-col flex-wrap">
+              <h1 className="text-[#F93B1D] font-bold text-[34px] mb-[17px] flex gap-[20px] font-face-helvetica leading-10">
+                <p>{values.general.first_name}</p>
+                <p>{values.general.last_name}</p>
+              </h1>
+              {values.general.email && (
+                <p className="text-[#1A1A1A] font-medium text-[18px] font-face-helvetica">
+                  <span>@</span> {values.general.email}
+                </p>
+              )}
+              {values.general.phone_number && (
+                <p className="text-[#1A1A1A] font-medium text-[18px]">
+                  <span>&#128222;</span> {values.general.phone_number}
+                </p>
+              )}
+            </div>
+
+            <div className="aboutMe-container mt-[34px] w-[432px] flex flex-col flex-wrap">
+              {values.general.about_me && (
+                <>
+                  <h4 className="text-[#F93B1D] font-bold text-[18px]">
+                    ᲩᲔᲛ ᲨᲔᲡᲐᲮᲔᲑ
+                  </h4>
+                  <p className="text-[#000000] font-normal text-[16px] ">
+                    {values.general.about_me}
+                  </p>
+                </>
+              )}
+            </div>
+          </div>
+          <img
+            className="w-[246px] h-[246px] rounded-full absolute top-[46px] right-[75px]"
+            src={avatar}
+            alt="avatar"
+          />
+        </div>
+        <hr />
+
+        {/* end personal info  */}
+
+        {/* <div className=" resume w-[822px] flex items-center justify-center"> */}
+        <div className="experience-infos justify-start ">
+          <h2 className="text-[#F93B1D] font-bold text-[18px] mt-[34px] mb-[15px]">
+            გამოცდილება
+          </h2>
+          <div className="position-employer flex gap-[7px]">
+            <div className="position-container  ">
+              {values.experience.position && (
+                <>
+                  <p className="text-[ #1A1A1A)] font-normal text-[16px]">
+                    {values.experience.position}
+                  </p>
+                </>
+              )}
+            </div>
+
+            <div className="employer-container ">
+              {values.experience.employer && (
+                <>
+                  <p className="text-[#000000] font-normal text-[16px]">
+                    {values.experience.employer}
+                  </p>
+                </>
+              )}
+            </div>
+          </div>
+
+          <div className="started-ended flex gap-[20px]">
+            <div className="started-container ">
+              {values.experience.started_at && (
+                <>
+                  <p className="text-[#909090] font-normal text-[16px]">
+                    {values.experience.started_at}
+                  </p>
+                </>
+              )}
+            </div>
+
+            <div className="ended-container ">
+              {values.experience.ended_at && (
+                <>
+                  <p className="text-[#909090;] font-normal text-[16px]">
+                    {values.experience.ended_at}
+                  </p>
+                </>
+              )}
+            </div>
+          </div>
+
+          <div className="description-container ">
+            {values.experience.description && (
+              <>
+                <p className="text-[#000; font-normal text-[16px]">
+                  {values.experience.description}
+                </p>
+              </>
+            )}
+
+            {/* tamar aq daapaste */}
+          </div>
+          {/* <Education startDate={startDate}></Education> */}
+        </div>
+      </div>
     </div>
   );
 };
