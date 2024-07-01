@@ -3,6 +3,7 @@ import { useResume } from "../lib/useResume";
 import avatar from "../assets/avatar.jpg";
 import Input from "../components/Input";
 import { useState } from "react";
+import Education from "./Education";
 
 const Experience = () => {
   const { inputErrors, values, setValues } = useResume();
@@ -162,37 +163,33 @@ const Experience = () => {
         </div>
       </div>
 
-      <div className="sideBar-container flex-col w-[822px] flex items-center justify-center">
-        <div className="my-[47px] pr-[75px] pl-[80px] flex">
-          <div>
-            <div className="name-surname-email-mobile-container">
-              <h1 className="text-[#F93B1D] font-bold text-[] mb-[17px] flex gap-[20px] font-face-helvetica leading-10">
+      <div className="sideBar-container flex-col w-[822px] flex px-[80px] py-[48px]">
+        <div className="my-[47px]">
+          <div className="flex flex-col">
+            <div className="name-surname-email-mobile-container w-[432px] flex flex-col flex-wrap">
+              <h1 className="text-[#F93B1D] font-bold text-[34px] mb-[17px] flex gap-[20px] font-face-helvetica leading-10">
                 <p>{values.general.first_name}</p>
                 <p>{values.general.last_name}</p>
               </h1>
-              <p className="text-[#1A1A1A] font-medium text-[18px] font-face-helvetica">
-                {values.general.email && (
-                  <>
-                    <span>@</span> {values.general.email}
-                  </>
-                )}
-              </p>
-              <p className="text-[#1A1A1A] font-medium text-[18px]">
-                {values.general.phone_number && (
-                  <>
-                    <span>&#128222;</span> {values.general.phone_number}
-                  </>
-                )}
-              </p>
+              {values.general.email && (
+                <p className="text-[#1A1A1A] font-medium text-[18px] font-face-helvetica">
+                  <span>@</span> {values.general.email}
+                </p>
+              )}
+              {values.general.phone_number && (
+                <p className="text-[#1A1A1A] font-medium text-[18px]">
+                  <span>&#128222;</span> {values.general.phone_number}
+                </p>
+              )}
             </div>
 
-            <div className="aboutMe-container mt-[34px]">
+            <div className="aboutMe-container mt-[34px] w-[432px] flex flex-col flex-wrap">
               {values.general.about_me && (
                 <>
                   <h4 className="text-[#F93B1D] font-bold text-[18px]">
                     ᲩᲔᲛ ᲨᲔᲡᲐᲮᲔᲑ
                   </h4>
-                  <p className="text-[#000000] font-normal text-[16px]">
+                  <p className="text-[#000000] font-normal text-[16px] ">
                     {values.general.about_me}
                   </p>
                 </>
@@ -200,7 +197,7 @@ const Experience = () => {
             </div>
           </div>
           <img
-            className="w-[246px] h-[246px] rounded-full"
+            className="w-[246px] h-[246px] rounded-full absolute top-[46px] right-[75px]"
             src={avatar}
             alt="avatar"
           />
@@ -210,7 +207,7 @@ const Experience = () => {
         {/* end personal info  */}
 
         {/* <div className=" resume w-[822px] flex items-center justify-center"> */}
-        <div className="experience-infos justify-start unset">
+        <div className="experience-infos justify-start ">
           <h2 className="text-[#F93B1D] font-bold text-[18px] mt-[34px] mb-[15px]">
             გამოცდილება
           </h2>
@@ -266,11 +263,13 @@ const Experience = () => {
                 </p>
               </>
             )}
+
+            {/* tamar aq daapaste */}
           </div>
+          {/* <Education startDate={startDate}></Education> */}
         </div>
       </div>
     </div>
-    // </div>
   );
 };
 
