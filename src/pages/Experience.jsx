@@ -5,16 +5,33 @@ import Input from "../components/Input";
 import { useState } from "react";
 
 const Experience = () => {
-  const { inputErrors, values } = useResume();
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const { inputErrors, values, setValues } = useResume();
+  const [startDate, setStartDate] = useState(values.experience.started_at);
+  const [endDate, setEndDate] = useState(values.experience.ended_at);
 
+  // const handleStartDate = (event) => {
+  //   setStartDate(event.target.value);
+  // };
+
+  // const handleEndDate = (event) => {
+  //   setEndDate(event.target.value);
+  // };
   const handleStartDate = (event) => {
-    setStartDate(event.target.value);
+    const newStartDate = event.target.value;
+    setStartDate(newStartDate);
+    setValues((prevValues) => ({
+      ...prevValues,
+      experience: { ...prevValues.experience, started_at: newStartDate },
+    }));
   };
 
   const handleEndDate = (event) => {
-    setEndDate(event.target.value);
+    const newEndDate = event.target.value;
+    setEndDate(newEndDate);
+    setValues((prevValues) => ({
+      ...prevValues,
+      experience: { ...prevValues.experience, ended_at: newEndDate },
+    }));
   };
 
   return (
