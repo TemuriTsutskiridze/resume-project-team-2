@@ -25,6 +25,14 @@ const Input = ({ inputName, name, error }) => {
           [inputName]: value,
         },
       });
+    } else if (location.pathname === "/education") {
+      setValues({
+        ...values,
+        education: {
+          ...values.education,
+          [inputName]: value,
+        },
+      });
     }
   };
 
@@ -36,7 +44,12 @@ const Input = ({ inputName, name, error }) => {
           error ? "border-[#EF5050]" : "border-[#BCBCBC]"
         }`}
         type="text"
-        value={values.general[inputName] || values.experience[inputName] || ""}
+        value={
+          values.general[inputName] ||
+          values.experience[inputName] ||
+          values.education[inputName] ||
+          ""
+        }
         onChange={handleChange}
       />
     </div>

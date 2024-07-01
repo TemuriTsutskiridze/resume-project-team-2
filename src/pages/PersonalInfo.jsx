@@ -81,7 +81,7 @@ const PersonalInfo = () => {
               htmlFor="about_me"
               className="text-[#1A1A1A] text-[16px] font-medium"
             >
-              ჩემ შესახებ (არასავალდებულო)
+              ჩემ შესახებ (არასავალდებუ ლო)
             </label>
             <Input inputName="about_me" name="about_me" />
           </div>
@@ -128,7 +128,6 @@ const PersonalInfo = () => {
 
         <div className="sideBar-container w-[822px] flex items-center justify-center">
           <div className="my-[47px] pr-[75px] pl-[80px] flex">
-
             <div>
               <div className="name-surname-email-mobile-container">
                 <div>
@@ -171,8 +170,6 @@ const PersonalInfo = () => {
                   ""
                 )}
               </div>
-
-
             </div>
             <img
               className="w-[246px] h-[246px] rounded-full"
@@ -180,9 +177,6 @@ const PersonalInfo = () => {
               alt="avatar"
             />
           </div>
-
-
-
         </div>
       </div>
     </div>
