@@ -6,10 +6,9 @@ import avatar from "../assets/avatar.jpg";
 import Input from "../components/Input";
 import "../index.css";
 
-const Resume = () => {
+const Resume = ({ selectedDegree, graduationDate }) => {
   const { inputErrors, values } = useResume();
 
-  //აქ უნდა შევქმნა სტეიტი degree-სთვის
 
   return (
     <div className="flex h-screen justify-center items-start">
@@ -62,13 +61,23 @@ const Resume = () => {
             </div>
         </div>
 
-        {/*//ამ ადგილას გადმოვაკოპირე ჩემი სტილები*/}
+               {/*//todo ჩასამატებელია ამ ადგილას ნიკას მიერ გაკეთებული და ნიკას პეიჯიდან მოსული ინფორმაცია*/}
 
+
+
+        {/*//ამ ადგილიდან იწყება ჩემს პეიჯზე რაც შეივსება ის ინფორმაცია*/}
         <div>
             <div className="school-degree-graduation_date-description-container">
 
 
                 <div className="education-container mt-[534px]">
+                    <p className="text-[#000000] font-normal text-[16px]">
+                        {selectedDegree}
+                    </p>
+                    <p className="text-[#000000] font-normal text-[16px]">
+                        {graduationDate}
+                    </p>
+
                     {values.education ? (
                         <>
                             <h4 className="text-[#F93B1D] font-bold text-[18px]">
@@ -78,7 +87,13 @@ const Resume = () => {
                                 {values.education.school}
                             </p>
 
-                            {/*//todo აქ უნდა ჩაჯდეს degree და რიცხვი კალენდარიდან*/}
+                            {/*// აქ მოდის  degree და რიცხვი კალენდარიდან*/}
+                            <p className="text-[#000000] font-normal text-[16px]">
+                                {selectedDegree}
+                            </p>
+                            <p className="text-[#000000] font-normal text-[16px]">
+                                {graduationDate}
+                            </p>
 
 
                             <p className="text-[#000000] font-normal text-[16px]">
@@ -89,6 +104,7 @@ const Resume = () => {
                         </>
                     ) : (
                         ""
+
                     )}
                 </div>
 
@@ -97,8 +113,8 @@ const Resume = () => {
         </div>
 
 
-    </div>
-    </div>
+           </div>
+       </div>
     </div>
   );
 };

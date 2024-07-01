@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useResume } from "../lib/useResume.js";
 import Input from "../components/Input";
@@ -6,9 +6,22 @@ import { FaAnglesLeft } from "react-icons/fa6";
 import { FormSelect } from "react-bootstrap";
 import avatar from "../assets/avatar.jpg";
 import "../index.css";
+import Resume from "./Resume.jsx";
 
 const Education = () => {
   const { inputErrors, values } = useResume();
+
+  //აქ ვქმნი სტეიტებს degree-სთვის და graduation_date-ისთვის;
+  const [selectedDegree, setSelectedDegree] = useState('');
+  const [graduationDate, setGraduationDate] = useState('');
+
+  //ქვემოთ ვქმნი ფუნქციებს degree-სთვის და graduation_date-;
+  const handleSelectChange = (event) => {
+    setSelectedDegree(event.target.value);
+  };
+  const handleDateChange = (event) => {
+    setGraduationDate(event.target.value);
+  };
 
 
 
@@ -71,18 +84,21 @@ const Education = () => {
                 className={`mt-[8px] mb-[8px] border ${
                   inputErrors.degree ? "border-[#EF5050]" : "border-[#98E37E]"
                 } px-[16px] py-[14px]`}
+                value={selectedDegree} // Set the value of the select input
+                onChange={handleSelectChange} // Handle change event
               >
                 <option>აირჩიეთ ხარისხი</option>
-                <option value="1">საშუალო სკოლის დიპლომი</option>
-                <option value="2">ზოგადსაგანმანათლებლო დიპლომი</option>
-                <option value="3">ბაკალავრი</option>
-                <option value="3">მაგისტრი</option>
-                <option value="3">დოქტორი</option>
-                <option value="3">ასოცირებული ხარისხი</option>
-                <option value="3">სტუდენტი</option>
-                <option value="3">კოლეჯი (ხარისხის გარეშე)</option>
-                <option value="3">სხვა</option>
+                <option value="საშუალო სკოლის დიპლომი">საშუალო სკოლის დიპლომი</option>
+                <option value="ზოგადსაგანმანათლებლო დიპლომი">ზოგადსაგანმანათლებლო დიპლომი</option>
+                <option value="ბაკალავრი">ბაკალავრი</option>
+                <option value="მაგისტრი">მაგისტრი</option>
+                <option value="დოქტორი">დოქტორი</option>
+                <option value="ასოცირებული ხარისხი">ასოცირებული ხარისხი</option>
+                <option value="სტუდენტი">სტუდენტი</option>
+                <option value="კოლეჯი (ხარისხის გარეშე)">კოლეჯი (ხარისხის გარეშე)</option>
+                <option value="სხვა">სხვა</option>
               </FormSelect>
+
             </div>
 
             <div className="graduation_dateContainer flex flex-col w-[419px]">
@@ -101,9 +117,9 @@ const Education = () => {
                 className={`mt-[8px] mb-[8px] border ${
                     inputErrors.graduation_date ? "border-[#EF5050]" : "border-[#98E37E]"
                 } px-[16px] py-[14px]`}
-                //inputName="graduation_date"
                 name="graduation_date"
-                //error={inputErrors.graduation_date}
+                value={graduationDate} // Set the value of the input
+                onChange={handleDateChange} // Handle change event
               />
             </div>
           </div>
@@ -203,12 +219,12 @@ const Education = () => {
           {/*//todo აქ უნდა ჩავსვა სტილის, რასაც დაწერს ნიკა*/}
 
 
-          {/*//todo ამ ადგილიდან იქყება ჩემი სტილები*/}
+          {/*//todo ამ ადგილიდან იწყება ჩემი სტილები რომელიც გასასწორებელია*/}
           <div>
             <div className="school-degree-graduation_date-description-container">
 
 
-              <div className="education-container mt-[534px]">
+              <div className="education-container mt-[47px]">
                 {values.education ? (
                     <>
                       <h4 className="text-[#F93B1D] font-bold text-[18px]">
@@ -218,17 +234,18 @@ const Education = () => {
                         {values.education.school}
                       </p>
 
-                      {/*//todo აქ უნდა ჩაჯდეს degree და რიცხვი კალებდარიდან*/}
-
-
-
-
-                      <p className="text-[#000000] font-normal text-[16px]" >
-                        {values.education.description}
+                      {/*//todo აქ უნდა ჩაჯდეს degree და რიცხვი კალენდარიდან*/}
+                      <p className="text-[#000000] font-normal text-[16px]">
+                        {selectedDegree}
+                      </p>
+                      <p className="text-[#000000] font-normal text-[16px]">
+                        {graduationDate}
                       </p>
 
 
-
+                      <p className="text-[#000000] font-normal text-[16px]">
+                        {values.education.description}
+                      </p>
 
                     </>
                 ) : (
@@ -237,13 +254,13 @@ const Education = () => {
               </div>
 
 
+              <Resume selectedDegree={selectedDegree} />
+              {/*//აქ ვაკეთებ პროპსების გადაცემას*/}
+              <Resume graduationDate={graduationDate} />
+
+
             </div>
           </div>
-
-
-
-
-
 
 
         </div>
