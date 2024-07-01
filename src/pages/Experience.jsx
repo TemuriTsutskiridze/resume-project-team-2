@@ -166,7 +166,7 @@ const Experience = () => {
         <div className="my-[47px] pr-[75px] pl-[80px] flex">
           <div>
             <div className="name-surname-email-mobile-container">
-              <h1 className="text-[#F93B1D] font-bold text-[34px] mb-[17px] flex gap-[20px] font-face-helvetica leading-10">
+              <h1 className="text-[#F93B1D] font-bold text-[] mb-[17px] flex gap-[20px] font-face-helvetica leading-10">
                 <p>{values.general.first_name}</p>
                 <p>{values.general.last_name}</p>
               </h1>
@@ -205,52 +205,52 @@ const Experience = () => {
             alt="avatar"
           />
         </div>
+        <hr />
       </div>
       {/* end personal info  */}
 
       <div className=" resume w-[822px] flex items-center justify-center">
-        <div className="experience infos justify-start">
-          <div className="position-container mt-[34px]">
-            {values.experience.position && (
-              <>
-                <h4 className="text-[#F93B1D] font-bold text-[18px]">
-                  თანამდებობა
-                </h4>
-                <p className="text-[#000000] font-normal text-[16px]">
-                  {values.experience.position}
-                </p>
-              </>
-            )}
-          </div>
+        <div className="experience-infos justify-start unset">
+          <h2 className="text-[#F93B1D] font-bold text-[18px] mt-[34px] mb-[15px]">
+            გამოცდილება
+          </h2>
+          <div className="position-employer flex gap-[7px]">
+            <div className="position-container  ">
+              {values.experience.position && (
+                <>
+                  <p className="text-[ #1A1A1A)] font-normal text-[16px]">
+                    {values.experience.position}
+                  </p>
+                </>
+              )}
+            </div>
 
-          <div className="employer-container mt-[34px]">
-            {values.experience.employer && (
-              <>
-                <h4 className="text-[#F93B1D] font-bold text-[18px]">
-                  დამსაქმებელი
-                </h4>
-                <p className="text-[#000000] font-normal text-[16px]">
-                  {values.experience.employer}
-                </p>
-              </>
-            )}
+            <div className="employer-container ">
+              {values.experience.employer && (
+                <>
+                  <p className="text-[#000000] font-normal text-[16px]">
+                    {values.experience.employer}
+                  </p>
+                </>
+              )}
+            </div>
           </div>
 
           <div className="started-ended flex gap-[20px]">
-            <div className="started-container mt-[34px]">
+            <div className="started-container ">
               {values.experience.started_at && (
                 <>
-                  <p className="text-[#000000] font-normal text-[16px]">
+                  <p className="text-[#909090] font-normal text-[16px]">
                     {values.experience.started_at}
                   </p>
                 </>
               )}
             </div>
 
-            <div className="ended-container mt-[34px]">
+            <div className="ended-container ">
               {values.experience.ended_at && (
                 <>
-                  <p className="text-[#000000] font-normal text-[16px]">
+                  <p className="text-[#909090;] font-normal text-[16px]">
                     {values.experience.ended_at}
                   </p>
                 </>
@@ -258,11 +258,10 @@ const Experience = () => {
             </div>
           </div>
 
-          <div className="description-container mt-[34px]">
+          <div className="description-container ">
             {values.experience.description && (
               <>
-                <h4 className="text-[#F93B1D] font-bold text-[18px]">აღწერა</h4>
-                <p className="text-[#000000] font-normal text-[16px]">
+                <p className="text-[#000; font-normal text-[16px]">
                   {values.experience.description}
                 </p>
               </>
