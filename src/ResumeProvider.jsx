@@ -51,8 +51,10 @@ export const ResumeProvider = ({ children }) => {
     about_me: false,
     email: false,
     phone_number: false,
+
     school: false,
     degree: false,
+    graduation_date: false,
     description: false,
   });
 
@@ -71,6 +73,24 @@ export const ResumeProvider = ({ children }) => {
       case "phone_number":
         errors.phone_number = value.length < 9;
         break;
+
+      case "school":
+        errors.school = !value.length < 2;
+        break;
+
+      case "degree":
+        errors.degree = !value;
+        break;
+
+      case "graduation_date":
+        errors.graduation_date = !value;
+        break;
+
+      case "description":
+        errors.description = !value;
+        break;
+
+
       default:
         break;
     }

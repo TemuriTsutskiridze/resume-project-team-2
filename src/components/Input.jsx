@@ -19,6 +19,25 @@ const Input = ({ inputName, name, error }) => {
         },
       });
     }
+
+
+
+
+
+
+
+
+
+
+    else if (location.pathname === "/education") {
+      setValues({
+        ...values,
+        education: {
+          ...values.education,
+          [inputName]: value,
+        },
+      });
+    }
   };
 
   return (
@@ -29,7 +48,8 @@ const Input = ({ inputName, name, error }) => {
           error ? "border-[#EF5050]" : "border-[#BCBCBC]"
         }`}
         type="text"
-        value={values.general[inputName] || ""}
+        value={values.general[inputName] ||  values.education[inputName] || ""}
+        //ეს თუ სწორი გამოდგა, მაშინ აქ values.experience[inputName]-იც დაგვჭირდება
         onChange={handleChange}
       />
     </div>
