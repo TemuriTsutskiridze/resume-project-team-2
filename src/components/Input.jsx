@@ -1,4 +1,3 @@
-import React from "react";
 import { useResume } from "../lib/useResume";
 import { useLocation } from "react-router";
 
@@ -26,14 +25,6 @@ const Input = ({ inputName, name, error }) => {
           [inputName]: value,
         },
       });
-    } else if (location.pathname === "/education") {
-      setValues({
-        ...values,
-        education: {
-          ...values.education,
-          [inputName]: value,
-        },
-      });
     }
   };
 
@@ -45,7 +36,7 @@ const Input = ({ inputName, name, error }) => {
           error ? "border-[#EF5050]" : "border-[#BCBCBC]"
         }`}
         type="text"
-        value={values.general[inputName] || ""}
+        value={values.general[inputName] || values.experience[inputName] || ""}
         onChange={handleChange}
       />
     </div>

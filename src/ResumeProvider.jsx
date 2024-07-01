@@ -67,6 +67,9 @@ export const ResumeProvider = ({ children }) => {
     degree: false,
     description: false,
     position: false,
+    employer: false,
+    started_at: false,
+    ended_at: false,
   });
 
   const validateInput = (name, value) => {
@@ -84,6 +87,14 @@ export const ResumeProvider = ({ children }) => {
       case "phone_number":
         errors.phone_number = value.length < 9;
         break;
+      // experience
+      case "position":
+        errors.position = value.length < 2;
+        break;
+      case "employer":
+        errors.employer = value.length < 2;
+        break;
+
       default:
         break;
     }

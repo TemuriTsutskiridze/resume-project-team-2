@@ -110,12 +110,6 @@ const Experience = () => {
             მეტი გამოცდილების დამატება
           </button>
           <div className="flex justify-between relative ">
-            {/* <button className="bg-[#6B40E3] text-white py-[12px] px-[24px] rounded-lg">
-              უკან
-            </button>
-            <button  onClick={} className="bg-[#6B40E3] text-white py-[12px] px-[24px] rounded-lg">
-              ᲨᲔᲛᲓᲔᲒᲘ
-            </button> */}
             <Link
               to="/personal-info"
               as={NavLink}

@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useResume } from "../lib/useResume";
 import Input from "../components/Input";
