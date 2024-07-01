@@ -208,49 +208,66 @@ const Experience = () => {
       </div>
       {/* end personal info  */}
 
-      <div className="w-[822px] flex items-center justify-center">
-        <div className="my-[47px] pr-[75px] pl-[80px] flex">
-          <div>
-            <div className="experience infos">
-              <h1 className="text-[#F93B1D] font-bold text-[34px] mb-[17px] flex gap-[20px] font-face-helvetica leading-10">
-                <p>{values.experience.position}</p>
-                <p>{values.experience.employer}</p>
-              </h1>
-              <p className="text-[#1A1A1A] font-medium text-[18px] font-face-helvetica">
-                {values.experience.started_at && (
-                  <>
-                    <span>{handleStartDate}</span>
-                  </>
-                )}
-              </p>
+      <div className=" resume w-[822px] flex items-center justify-center">
+        <div className="experience infos justify-start">
+          <div className="position-container mt-[34px]">
+            {values.experience.position && (
+              <>
+                <h4 className="text-[#F93B1D] font-bold text-[18px]">
+                  თანამდებობა
+                </h4>
+                <p className="text-[#000000] font-normal text-[16px]">
+                  {values.experience.position}
+                </p>
+              </>
+            )}
+          </div>
 
-              <p className="text-[#1A1A1A] font-medium text-[18px]">
-                {values.experience.ended_at && (
-                  <>
-                    <span>&#128222;</span> {values.experience.ended_at}
-                  </>
-                )}
-              </p>
+          <div className="employer-container mt-[34px]">
+            {values.experience.employer && (
+              <>
+                <h4 className="text-[#F93B1D] font-bold text-[18px]">
+                  დამსაქმებელი
+                </h4>
+                <p className="text-[#000000] font-normal text-[16px]">
+                  {values.experience.employer}
+                </p>
+              </>
+            )}
+          </div>
+
+          <div className="started-ended flex gap-[20px]">
+            <div className="started-container mt-[34px]">
+              {values.experience.started_at && (
+                <>
+                  <p className="text-[#000000] font-normal text-[16px]">
+                    {values.experience.started_at}
+                  </p>
+                </>
+              )}
             </div>
 
-            <div className="aboutMe-container mt-[34px]">
-              {values.experience.description && (
+            <div className="ended-container mt-[34px]">
+              {values.experience.ended_at && (
                 <>
-                  <h4 className="text-[#F93B1D] font-bold text-[18px]">
-                    აღწერა
-                  </h4>
                   <p className="text-[#000000] font-normal text-[16px]">
-                    {values.experience.description}
+                    {values.experience.ended_at}
                   </p>
                 </>
               )}
             </div>
           </div>
-          {/* <img
-            className="w-[246px] h-[246px] rounded-full"
-            src={avatar}
-            alt="avatar"
-          /> */}
+
+          <div className="description-container mt-[34px]">
+            {values.experience.description && (
+              <>
+                <h4 className="text-[#F93B1D] font-bold text-[18px]">აღწერა</h4>
+                <p className="text-[#000000] font-normal text-[16px]">
+                  {values.experience.description}
+                </p>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>
