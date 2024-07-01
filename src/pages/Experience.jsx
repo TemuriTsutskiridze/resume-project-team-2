@@ -162,7 +162,7 @@ const Experience = () => {
         </div>
       </div>
 
-      <div className="sideBar-container w-[822px] flex items-center justify-center">
+      <div className="sideBar-container flex-col w-[822px] flex items-center justify-center">
         <div className="my-[47px] pr-[75px] pl-[80px] flex">
           <div>
             <div className="name-surname-email-mobile-container">
@@ -206,10 +206,10 @@ const Experience = () => {
           />
         </div>
         <hr />
-      </div>
-      {/* end personal info  */}
 
-      <div className=" resume w-[822px] flex items-center justify-center">
+        {/* end personal info  */}
+
+        {/* <div className=" resume w-[822px] flex items-center justify-center"> */}
         <div className="experience-infos justify-start unset">
           <h2 className="text-[#F93B1D] font-bold text-[18px] mt-[34px] mb-[15px]">
             გამოცდილება
@@ -270,6 +270,7 @@ const Experience = () => {
         </div>
       </div>
     </div>
+    // </div>
   );
 };
 
