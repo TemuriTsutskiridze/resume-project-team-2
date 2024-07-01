@@ -9,6 +9,8 @@ import "../index.css";
 const Resume = () => {
   const { inputErrors, values } = useResume();
 
+  //აქ უნდა შევქმნა სტეიტი degree-სთვის
+
   return (
     <div className="flex h-screen justify-center items-start">
 
