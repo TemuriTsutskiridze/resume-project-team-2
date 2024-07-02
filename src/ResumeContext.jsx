@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import Input from "./components/Input.jsx";
+// import Input from "./components/Input.jsx";
 
 export const ResumeContext = createContext({
   setValues: () => {},
@@ -12,7 +12,13 @@ export const ResumeContext = createContext({
       email: "",
       phone_number: "",
     },
-    // experience: [],
+    experience: {
+      position: "",
+      employer: "",
+      started_at: "",
+      ended_at: "",
+      description: "",
+    },
 
     education: {
       //id:1 ,
@@ -54,7 +60,11 @@ export const ResumeProvider = () => {
       {values.general.email}
       {values.general.phone_number}
 
-      {values.experience}
+      {values.experience.position}
+      {values.experience.employer}
+      {values.experience.started_at}
+      {values.experience.ended_at}
+      {values.experience.description}
 
       {values.education.id}
       {values.education.school}

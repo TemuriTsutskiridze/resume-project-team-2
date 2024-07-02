@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useResume } from "../lib/useResume";
 import Input from "../components/Input";
@@ -82,7 +81,7 @@ const PersonalInfo = () => {
               htmlFor="about_me"
               className="text-[#1A1A1A] text-[16px] font-medium"
             >
-              ჩემ შესახებ (არასავალდებულო)
+              ჩემ შესახებ (არასავალდებუ ლო)
             </label>
             <Input inputName="about_me" name="about_me" />
           </div>
@@ -126,53 +125,42 @@ const PersonalInfo = () => {
             შემდეგი
           </Link>
         </div>
-        <div className="sideBar-container w-[822px] flex items-center justify-center">
-          <div className="my-[47px] pr-[75px] pl-[80px] flex">
-            <div>
-              <div className="name-surname-email-mobile-container">
-                <div>
-                  <h1 className="text-[#F93B1D] font-bold text-[34px] mb-[17px] flex gap-[20px] font-face-helvetica leading-10	">
-                    <p>{values.general.first_name}</p>
-                    <p>{values.general.last_name}</p>
-                  </h1>
+
+        <div className="sideBar-container w-[822px] pr-[75px] pl-[80px] flex relative">
+          <div className="my-[47px]">
+            <div className="flex flex-col">
+              <div className="name-surname-email-mobile-container w-[432px] flex flex-col flex-wrap">
+                <h1 className="text-[#F93B1D] font-bold text-[34px] mb-[17px] flex gap-[20px] font-face-helvetica leading-10">
+                  <p>{values.general.first_name}</p>
+                  <p>{values.general.last_name}</p>
+                </h1>
+                {values.general.email && (
                   <p className="text-[#1A1A1A] font-medium text-[18px] font-face-helvetica">
-                    {values.general.email ? (
-                      <>
-                        <span>@</span> {values.general.email}
-                      </>
-                    ) : (
-                      ""
-                    )}
+                    <span>@</span> {values.general.email}
                   </p>
+                )}
+                {values.general.phone_number && (
                   <p className="text-[#1A1A1A] font-medium text-[18px]">
-                    {values.general.phone_number ? (
-                      <>
-                        <span>&#128222;</span> {values.general.phone_number}
-                      </>
-                    ) : (
-                      ""
-                    )}
+                    <span>&#128222;</span> {values.general.phone_number}
                   </p>
-                </div>
+                )}
               </div>
 
-              <div className="aboutMe-container mt-[34px]">
-                {values.general.about_me ? (
+              <div className="aboutMe-container mt-[34px] w-[432px] flex flex-col flex-wrap">
+                {values.general.about_me && (
                   <>
                     <h4 className="text-[#F93B1D] font-bold text-[18px]">
                       ᲩᲔᲛ ᲨᲔᲡᲐᲮᲔᲑ
                     </h4>
-                    <p className="text-[#000000] font-normal text-[16px]">
+                    <p className="text-[#000000] font-normal text-[16px] ">
                       {values.general.about_me}
                     </p>
                   </>
-                ) : (
-                  ""
                 )}
               </div>
             </div>
             <img
-              className="w-[246px] h-[246px] rounded-full"
+              className="w-[246px] h-[246px] rounded-full absolute top-[46px] right-[75px]"
               src={avatar}
               alt="avatar"
             />
